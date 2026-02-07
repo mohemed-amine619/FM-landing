@@ -20,6 +20,9 @@ let timeoutId: number;
 const type = () => {
     const currentPhrase = phrases[phraseIndex];
 
+    // FIX: Guard clause to satisfy TypeScript strict null checks
+    if (!currentPhrase) return;
+
     if (isDeleting) {
         typingText.value = currentPhrase.substring(0, charIndex - 1);
         charIndex--;
@@ -79,7 +82,6 @@ onUnmounted(() => {
                 </div>
 
                 <!-- Logo Image -->
-                <!-- Note: In Vite, files in /public are accessed via root path '/' -->
                 <img src="/logo.svg" alt="Fullstack Master Logo"
                     class="relative z-10 w-full max-w-lg md:max-w-2xl mx-auto drop-shadow-[0_0_15px_rgba(6,182,212,0.3)] transition-transform duration-700 hover:scale-105 hover:drop-shadow-[0_0_30px_rgba(74,222,128,0.5)] animate-float">
             </div>
