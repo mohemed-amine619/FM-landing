@@ -5,6 +5,7 @@ import HeroSection from './components/HeroSection.vue';
 import ServicesSection from './components/ServicesSection.vue';
 import ContactForm from './components/ContactForm.vue';
 import TechComponents from './components/TechComponents.vue';
+import TestimonialsSection from './components/TestimonialsSection.vue';
 
 const scrollTo = (id: string) => {
    const el = document.querySelector(id);
@@ -22,6 +23,7 @@ const scrollTo = (id: string) => {
 
       <!-- You can break TechStack and Stats into their own files similarly -->
       <TechComponents />
+      <TestimonialsSection />
       <ContactForm />
 
       <footer class="py-8 border-t border-white/10 bg-brand-dark relative z-10">

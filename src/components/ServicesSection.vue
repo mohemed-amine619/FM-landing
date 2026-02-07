@@ -4,9 +4,9 @@ import type { Service } from '../types';
 const services: Service[] = [
     {
         title: 'Fullstack Development',
-        desc: 'Complete web solutions using Vue, React, Node.js and scalable cloud infrastructure.',
+        desc: 'Complete web solutions using Vue, React, Laravel and scalable cloud infrastructure.',
         icon: 'ph-code',
-        tags: ['Vue.js', 'React', 'Node.js', 'PostgreSQL']
+        tags: ['Vue.js', 'React', 'Laravel', 'PostgreSQL']
     },
     {
         title: 'UI/UX Design',
@@ -25,6 +25,18 @@ const services: Service[] = [
         desc: 'Streamline operations with custom Python scripts, n8n workflows, and AI integration.',
         icon: 'ph-robot',
         tags: ['Python', 'n8n', 'OpenAI', 'Zapier']
+    },
+    {
+        title: 'Cloud & DevOps',
+        desc: 'Secure, scalable infrastructure design with automated CI/CD deployment pipelines.',
+        icon: 'ph-cloud-arrow-up',
+        tags: ['AWS', 'Docker', 'Kubernetes', 'GitHub Actions']
+    },
+    {
+        title: 'SEO & Performance',
+        desc: 'Technical SEO optimization and speed enhancements for maximum visibility.',
+        icon: 'ph-rocket-launch',
+        tags: ['Core Web Vitals', 'Analytics', 'PageSpeed', 'SSR']
     }
 ];
 </script>
@@ -38,8 +50,8 @@ const services: Service[] = [
                 <p class="text-gray-400 font-mono">End-to-end development & automation</p>
             </div>
 
-            <!-- Updated grid to 4 columns on large screens, or 2x2 grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6">
+            <!-- Updated grid to 3 columns on large screens for better balance with 6 items -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div v-for="(service, index) in services" :key="index"
                     class="glass-card p-6 rounded-xl group relative overflow-hidden h-full flex flex-col">
                     <!-- Hover Glow -->
