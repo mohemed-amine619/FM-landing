@@ -18,8 +18,8 @@ const formStatusType = ref<'success' | 'error'>('success');
 // 1. Go to https://formspree.io/
 // 2. Create a new form
 // 3. Paste your Form ID here (e.g., "mdoq...")
-const FORMSPREE_ID = 'YOUR_FORM_ID_HERE';
-const ENDPOINT = `https://formspree.io/f/${FORMSPREE_ID}`;
+const FORMSPREE_ID: string = 'xnjbqvnq';
+const ENDPOINT: string = `https://formspree.io/f/${FORMSPREE_ID}`;
 
 const submitForm = async () => {
     // Reset status
