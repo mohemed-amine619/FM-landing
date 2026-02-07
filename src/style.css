@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    color: #e2e8f0;
+    background-color: #050910;
+}
+
+.neon-text-blue {
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.neon-text-green {
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+}
+
+.glass-card {
+    border: 1px solid rgba(6, 182, 212, 0.1);
+    background: rgba(11, 18, 33, 0.7);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(12px);
+}
+
+.glass-card:hover {
+    border-color: rgba(74, 222, 128, 0.5);
+    box-shadow: 0 10px 30px -10px rgba(74, 222, 128, 0.15);
+    transform: translateY(-5px);
+}
