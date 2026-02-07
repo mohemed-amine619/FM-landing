@@ -19,6 +19,12 @@ const services: Service[] = [
         desc: 'Cross-platform mobile applications that perform like native on iOS and Android.',
         icon: 'ph-device-mobile',
         tags: ['React Native', 'Flutter', 'iOS', 'Android']
+    },
+    {
+        title: 'Automation & AI',
+        desc: 'Streamline operations with custom Python scripts, n8n workflows, and AI integration.',
+        icon: 'ph-robot',
+        tags: ['Python', 'n8n', 'OpenAI', 'Zapier']
     }
 ];
 </script>
@@ -29,33 +35,51 @@ const services: Service[] = [
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4"><span class="text-brand-green">/</span>
                     Capabilities</h2>
-                <p class="text-gray-400 font-mono">End-to-end development services</p>
+                <p class="text-gray-400 font-mono">End-to-end development & automation</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Updated grid to 4 columns on large screens, or 2x2 grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6">
                 <div v-for="(service, index) in services" :key="index"
-                    class="glass-card p-8 rounded-xl group relative overflow-hidden">
+                    class="glass-card p-6 rounded-xl group relative overflow-hidden h-full flex flex-col">
+                    <!-- Hover Glow -->
                     <div
                         class="absolute -right-10 -top-10 w-32 h-32 bg-brand-cyan/20 rounded-full blur-[50px] group-hover:bg-brand-green/20 transition-colors duration-500">
                     </div>
 
                     <div
-                        class="mb-6 inline-block p-4 rounded-lg bg-white/5 text-brand-cyan group-hover:text-brand-green group-hover:scale-110 transition-all duration-300">
+                        class="mb-6 inline-block p-3 rounded-lg bg-white/5 text-brand-cyan group-hover:text-brand-green group-hover:scale-110 transition-all duration-300 w-fit">
                         <i :class="['ph', service.icon, 'text-3xl']"></i>
                     </div>
+
                     <h3 class="text-xl font-bold text-white mb-3 group-hover:text-brand-cyan transition-colors">{{
                         service.title }}</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">{{ service.desc }}</p>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-grow">{{ service.desc }}</p>
 
-                    <ul class="space-y-2">
-                        <li v-for="tag in service.tags" :key="tag"
-                            class="flex items-center text-xs font-mono text-gray-500">
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        <span v-for="tag in service.tags" :key="tag"
+                            class="inline-flex items-center text-xs font-mono text-gray-500 bg-white/5 px-2 py-1 rounded">
                             <span class="w-1.5 h-1.5 bg-brand-green rounded-full mr-2"></span>
                             {{ tag }}
-                        </li>
-                    </ul>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 </template>
+
+<style scoped>
+.glass-card {
+    background: rgba(11, 18, 33, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(6, 182, 212, 0.1);
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    border-color: rgba(74, 222, 128, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -10px rgba(74, 222, 128, 0.15);
+}
+</style>
