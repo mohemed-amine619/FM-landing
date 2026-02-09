@@ -15,7 +15,7 @@ const projects: Project[] = [
         image: 'https://placehold.co/600x400/0b1221/06b6d4?text=FinTech+Dashboard', // Replace with real screenshots
         description: 'Real-time crypto trading platform processing high-frequency data via WebSockets. Features dark mode UI and sub-second latency.',
         tech: ['Laravel', 'Vue.js', 'Reverb', 'Tailwind'],
-        link: '#'
+        link: 'https://fintech-dash-umber.vercel.app/'
     },
     {
         title: 'CyberCommerce Core',
