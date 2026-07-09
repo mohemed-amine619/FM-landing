@@ -8,25 +8,26 @@ export default {
     extend: {
       colors: {
         brand: {
-          dark: '#050910',   // Deepest background
-          navy: '#0b1221',   // Secondary background
-          cyan: '#06b6d4',   // Logo cyan
-          green: '#4ade80',  // Circuit green
-          blue: '#3b82f6',   // Text gradient blue
-          purple: '#a855f7'  // Accent purple
+          dark: '#030712',   // Very dark blue/black
+          navy: '#0b1221',   // Off-black
+          cyan: '#049AB5',   // Logo Cyan
+          green: '#25DC7D',  // Logo Green
+          blue: '#0491C3',   // Logo Blue
+          purple: '#818cf8'  // Soft purple
         }
       },
       fontFamily: {
-        sans: ['Outfit', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       backgroundImage: {
-        'circuit-pattern': "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 L30 10 L30 30' fill='none' stroke='%234ade80' stroke-width='0.5' opacity='0.1'/%3E%3C/svg%3E\")",
+        'circuit-pattern': "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 L30 10 L30 30' fill='none' stroke='%23049AB5' stroke-width='0.5' opacity='0.05'/%3E%3C/svg%3E\")",
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
         'marquee': 'marquee 20s linear infinite',
         'pulse-glow': 'pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
       },
       keyframes: {
         float: {
@@ -39,7 +40,11 @@ export default {
         },
         'pulse-glow': {
           '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '.5' },
+          '50%': { opacity: '.3' },
+        },
+        fadeInUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         }
       }
     },

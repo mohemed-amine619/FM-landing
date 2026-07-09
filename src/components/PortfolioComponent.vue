@@ -43,10 +43,10 @@ const projects: Project[] = [
             <!-- Header -->
             <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                 <div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">
-                        <span class="text-brand-green">/</span> Deployed Systems
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-green">/</span> Selected Work
                     </h2>
-                    <p class="text-gray-400 font-mono">Selected case studies from our mission logs</p>
+                    <p class="text-slate-400 font-sans font-light text-lg mt-2">Case studies from enterprise deployments</p>
                 </div>
             </div>
 
@@ -59,7 +59,7 @@ const projects: Project[] = [
                     <div class="relative h-52 overflow-hidden">
                         <!-- Color overlay that fades on hover -->
                         <div
-                            class="absolute inset-0 bg-brand-navy/60 mix-blend-multiply group-hover:bg-transparent transition-all duration-500 z-10">
+                            class="absolute inset-0 bg-brand-dark/40 group-hover:bg-transparent transition-all duration-700 z-10">
                         </div>
                         <!-- Image zoom effect -->
                         <img :src="project.image" :alt="project.title"
@@ -67,7 +67,7 @@ const projects: Project[] = [
 
                         <!-- Category Tag -->
                         <div
-                            class="absolute top-4 left-4 z-20 px-3 py-1 bg-black/50 backdrop-blur-md border border-white/10 rounded-full text-xs font-mono text-brand-cyan">
+                            class="absolute top-4 left-4 z-20 px-3 py-1 bg-black/60 backdrop-blur-xl border border-white/10 rounded-full text-xs font-medium text-white shadow-lg">
                             {{ project.category }}
                         </div>
                     </div>
@@ -75,7 +75,7 @@ const projects: Project[] = [
                     <!-- Content -->
                     <div class="p-6 flex flex-col flex-grow">
                         <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold text-white group-hover:text-brand-green transition-colors">{{
+                            <h3 class="text-xl font-semibold text-white group-hover:text-brand-green transition-colors">{{
                                 project.title }}</h3>
                             <a :href="project.link"
                                 class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:bg-brand-cyan hover:border-brand-cyan hover:text-black transition-all transform hover:-rotate-45">
@@ -87,9 +87,9 @@ const projects: Project[] = [
                             project.description }}</p>
 
                         <!-- Tech Tags -->
-                        <div class="pt-4 border-t border-white/5 flex flex-wrap gap-2">
+                        <div class="pt-5 border-t border-white/[0.05] flex flex-wrap gap-2">
                             <span v-for="tag in project.tech" :key="tag"
-                                class="text-[10px] font-mono text-gray-500 bg-white/5 px-2 py-1 rounded border border-transparent group-hover:border-brand-green/20 transition-colors">
+                                class="text-xs font-medium text-gray-400 bg-white/[0.02] px-2.5 py-1 rounded-full border border-white/[0.05]">
                                 {{ tag }}
                             </span>
                         </div>
@@ -106,9 +106,5 @@ const projects: Project[] = [
 </template>
 
 <style scoped>
-.glass-card {
-    background: rgba(11, 18, 33, 0.4);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
+/* Scoped styles omitted, using global glass-card */
 </style>

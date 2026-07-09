@@ -29,19 +29,20 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
 </script>
 
 <template>
-    <nav class="fixed w-full z-50 transition-all duration-300"
-        :class="isScrolled ? 'bg-brand-dark/90 backdrop-blur-lg border-b border-white/5' : 'bg-transparent'">
+    <nav class="fixed w-full z-50 transition-all duration-500"
+        :class="isScrolled ? 'glass-panel py-2' : 'bg-transparent py-4'">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
                 <div class="flex items-center gap-3 group cursor-pointer" @click="scrollTo('#home')">
-                    <!-- Note: Put image.png in your public folder -->
-                    <img src="../../public/logo.png" alt="Fullstack Master"
-                        class="h-10 w-auto object-contain drop-shadow-[0_0_5px_rgba(6,182,212,0.5)] transition-transform hover:scale-105">
+                    <div class="relative flex items-center justify-center w-12 h-12 rounded-xl bg-white/[0.02] border border-white/[0.05] group-hover:border-brand-cyan/50 transition-all duration-500 overflow-hidden group-hover:shadow-[0_0_20px_rgba(4,154,181,0.4)]">
+                        <div class="absolute inset-0 bg-gradient-to-br from-brand-cyan/30 to-brand-green/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <img src="/logo.svg" alt="Fullstack Master Logo"
+                            class="relative h-7 w-auto object-contain drop-shadow-[0_0_12px_rgba(4,154,181,0.8)] transition-transform duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(37,220,125,1)]">
+                    </div>
                     <div
-                        class="font-sans font-bold text-xl tracking-wider uppercase flex flex-col leading-none md:block md:leading-normal">
-                        <span class="text-white">Fullstack</span>
-                        <span class="text-brand-cyan">Master</span>
+                        class="font-sans font-bold text-xl tracking-tight flex flex-col leading-none md:block md:leading-normal">
+                        <span class="text-white drop-shadow-md">Fullstack</span><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-green drop-shadow-lg">Master</span>
                     </div>
                 </div>
 
@@ -50,13 +51,13 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
                     <div class="flex items-center space-x-8">
                         <a v-for="item in navItems" :key="item.name" @click.prevent="scrollTo(item.href)"
                             :href="item.href"
-                            class="text-gray-300 hover:text-brand-green font-mono text-sm transition-colors duration-200 cursor-pointer">
-                            <span class="text-brand-cyan mr-1">&lt;</span>{{ item.name }}<span
-                                class="text-brand-cyan">/&gt;</span>
+                            class="text-gray-400 hover:text-white font-sans text-sm font-medium transition-colors duration-200 cursor-pointer relative group">
+                            {{ item.name }}
+                            <span class="absolute -bottom-1 left-0 w-0 h-[2px] bg-brand-cyan transition-all duration-300 group-hover:w-full rounded-full"></span>
                         </a>
                         <button @click="scrollTo('#contact')"
-                            class="px-6 py-2 border border-brand-cyan text-brand-cyan hover:bg-brand-cyan hover:text-brand-dark font-bold font-mono text-sm transition-all duration-300 rounded-sm">
-                            START_PROJECT
+                            class="glow-button">
+                            <span class="relative z-10 font-sans tracking-wide text-sm font-medium">Book Consultation</span>
                         </button>
                     </div>
                 </div>
@@ -71,10 +72,10 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
         </div>
 
         <!-- Mobile Menu -->
-        <div v-if="isMobileMenuOpen" class="md:hidden bg-brand-navy border-b border-white/10">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div v-if="isMobileMenuOpen" class="md:hidden glass-panel">
+            <div class="px-4 pt-2 pb-4 space-y-2">
                 <a v-for="item in navItems" :key="item.name" @click.prevent="scrollTo(item.href)" :href="item.href"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 cursor-pointer">
+                    class="block px-3 py-3 rounded-lg text-base font-medium text-slate-300 hover:text-white hover:bg-white/5 cursor-pointer transition-colors">
                     {{ item.name }}
                 </a>
             </div>

@@ -57,7 +57,7 @@ const testimonials: Testimonial[] = [
     <section id="testimonials" class="py-24 relative z-10 overflow-hidden">
 
         <!-- Background Atmosphere (Glowing Orbs) -->
-        <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute inset-0 pointer-events-none opacity-40">
             <div
                 class="absolute top-20 left-0 w-[500px] h-[500px] bg-brand-cyan/5 rounded-full blur-[100px] -translate-x-1/2">
             </div>
@@ -71,19 +71,13 @@ const testimonials: Testimonial[] = [
             <!-- Section Header -->
             <div class="text-center mb-16 relative">
                 <div class="inline-block relative">
-                    <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                        <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-brand-cyan">/</span>
-                        Client Intel
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-green">/</span> Client Intel
                     </h2>
-                    <!-- Subtle glitch line under title -->
-                    <div
-                        class="absolute -bottom-2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-cyan/50 to-transparent">
-                    </div>
                 </div>
-                <p class="text-gray-400 font-mono mt-4 max-w-2xl mx-auto">
-                    Transmission logs from secured collaborations. <br class="hidden md:block" />
-                    <span class="text-brand-cyan/70 text-sm">Status: 100% Satisfied</span>
+                <p class="text-slate-400 font-sans text-lg mt-4 max-w-2xl mx-auto font-light">
+                    Transmission logs from secured enterprise collaborations. <br class="hidden md:block" />
+                    <span class="text-brand-cyan text-sm mt-2 block font-medium">Status: 100% Satisfied</span>
                 </p>
             </div>
 
@@ -94,19 +88,19 @@ const testimonials: Testimonial[] = [
 
                     <!-- Top Gradient Line -->
                     <div
-                        class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-cyan via-brand-blue to-brand-green opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-cyan/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     </div>
 
                     <!-- Decorative Quote Icon (Background Watermark) -->
                     <div
-                        class="absolute -top-4 -right-4 text-8xl text-white/5 font-serif leading-none select-none pointer-events-none group-hover:text-brand-cyan/10 transition-colors duration-500">
+                        class="absolute -top-4 -right-4 text-8xl text-white/[0.02] font-serif leading-none select-none pointer-events-none group-hover:text-brand-cyan/[0.05] transition-colors duration-500">
                         "
                     </div>
 
                     <!-- Stars -->
                     <div class="flex gap-1 mb-6 relative z-10">
                         <i v-for="n in 5" :key="n" class="ph-fill ph-star text-sm transition-colors duration-300"
-                            :class="n <= item.rating ? 'text-brand-green drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]' : 'text-gray-700'">
+                            :class="n <= item.rating ? 'text-brand-cyan drop-shadow-[0_0_8px_rgba(4,154,181,0.4)]' : 'text-gray-800'">
                         </i>
                     </div>
 
@@ -120,21 +114,18 @@ const testimonials: Testimonial[] = [
 
                     <!-- Author Info -->
                     <div
-                        class="flex items-center gap-4 mt-8 pt-6 border-t border-white/5 relative z-10 group-hover:border-white/10 transition-colors">
+                        class="flex items-center gap-4 mt-8 pt-6 border-t border-white/[0.05] relative z-10 transition-colors">
                         <!-- Avatar / Initials -->
                         <div
-                            class="w-12 h-12 rounded-full bg-brand-navy border border-white/10 flex items-center justify-center relative overflow-hidden group-hover:border-brand-cyan/50 transition-colors">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-br from-brand-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                            </div>
-                            <span class="text-brand-cyan font-bold font-mono text-lg relative z-10">{{
+                            class="w-12 h-12 rounded-full bg-black/50 border border-white/10 flex items-center justify-center relative overflow-hidden group-hover:border-brand-cyan/50 transition-colors">
+                            <span class="text-brand-cyan font-medium font-sans text-lg relative z-10">{{
                                 item.name.charAt(0) }}</span>
                         </div>
 
                         <div>
-                            <h4 class="text-white font-bold text-sm tracking-wide">{{ item.name }}</h4>
-                            <p class="text-xs text-brand-cyan font-mono mt-0.5">{{ item.role }} <span
-                                    class="text-gray-500">@</span> {{ item.company }}</p>
+                            <h4 class="text-white font-semibold text-sm tracking-wide">{{ item.name }}</h4>
+                            <p class="text-xs text-gray-400 font-sans font-light mt-0.5">{{ item.role }} <span
+                                    class="text-gray-600">@</span> {{ item.company }}</p>
                         </div>
                     </div>
                 </div>
@@ -145,22 +136,5 @@ const testimonials: Testimonial[] = [
 </template>
 
 <style scoped>
-.glass-card {
-    background: rgba(11, 18, 33, 0.4);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    /* Bouncy subtle physics */
-}
-
-.glass-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    background: linear-gradient(145deg, rgba(11, 18, 33, 0.7) 0%, rgba(11, 18, 33, 0.9) 100%);
-    border-color: rgba(6, 182, 212, 0.3);
-    box-shadow:
-        0 20px 40px -10px rgba(0, 0, 0, 0.5),
-        0 0 20px rgba(6, 182, 212, 0.1);
-    /* Cyan glow */
-}
+/* Scoped styles omitted, using global glass-card */
 </style>

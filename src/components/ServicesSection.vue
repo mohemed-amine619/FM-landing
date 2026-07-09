@@ -45,9 +45,8 @@ const services: Service[] = [
     <section id="services" class="py-24 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4"><span class="text-brand-green">/</span>
-                    Capabilities</h2>
-                <p class="text-gray-400 font-mono">End-to-end development & automation</p>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight"><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-green">/</span> Capabilities</h2>
+                <p class="text-gray-400 font-sans text-lg font-light">End-to-end development & infrastructure</p>
             </div>
 
             <!-- Updated grid to 3 columns on large screens for better balance with 6 items -->
@@ -56,22 +55,21 @@ const services: Service[] = [
                     class="glass-card p-6 rounded-xl group relative overflow-hidden h-full flex flex-col">
                     <!-- Hover Glow -->
                     <div
-                        class="absolute -right-10 -top-10 w-32 h-32 bg-brand-cyan/20 rounded-full blur-[50px] group-hover:bg-brand-green/20 transition-colors duration-500">
+                        class="absolute -right-10 -top-10 w-32 h-32 bg-brand-cyan/10 rounded-full blur-[50px] group-hover:bg-brand-green/10 transition-colors duration-500">
                     </div>
 
                     <div
-                        class="mb-6 inline-block p-3 rounded-lg bg-white/5 text-brand-cyan group-hover:text-brand-green group-hover:scale-110 transition-all duration-300 w-fit">
+                        class="mb-6 inline-block p-3 rounded-xl bg-white/[0.03] border border-white/[0.05] text-brand-cyan group-hover:text-brand-green group-hover:bg-white/[0.05] transition-all duration-300 w-fit">
                         <i :class="['ph', service.icon, 'text-3xl']"></i>
                     </div>
 
-                    <h3 class="text-xl font-bold text-white mb-3 group-hover:text-brand-cyan transition-colors">{{
+                    <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-gray-200 transition-colors">{{
                         service.title }}</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4 flex-grow">{{ service.desc }}</p>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 font-light flex-grow">{{ service.desc }}</p>
 
                     <div class="flex flex-wrap gap-2 mt-auto">
                         <span v-for="tag in service.tags" :key="tag"
-                            class="inline-flex items-center text-xs font-mono text-gray-500 bg-white/5 px-2 py-1 rounded">
-                            <span class="w-1.5 h-1.5 bg-brand-green rounded-full mr-2"></span>
+                            class="inline-flex items-center text-xs font-medium text-gray-400 bg-white/[0.03] border border-white/[0.05] px-2.5 py-1 rounded-full">
                             {{ tag }}
                         </span>
                     </div>
@@ -82,16 +80,5 @@ const services: Service[] = [
 </template>
 
 <style scoped>
-.glass-card {
-    background: rgba(11, 18, 33, 0.7);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(6, 182, 212, 0.1);
-    transition: all 0.3s ease;
-}
-
-.glass-card:hover {
-    border-color: rgba(74, 222, 128, 0.5);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px -10px rgba(74, 222, 128, 0.15);
-}
+/* Scoped styles omitted, using global glass-card */
 </style>

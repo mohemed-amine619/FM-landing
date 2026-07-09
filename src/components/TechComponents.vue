@@ -28,18 +28,18 @@ const techStack: TechItem[] = [
 ];
 </script>
 <template>
-    <section id="tech" class="py-12 border-y border-white/5 bg-brand-navy/50 overflow-hidden relative z-10">
+    <section id="tech" class="py-12 border-y border-white/[0.05] bg-[#030303] overflow-hidden relative z-10">
         <div class="max-w-7xl mx-auto px-4 mb-8 text-center">
-            <h3 class="font-mono text-brand-cyan text-sm tracking-widest uppercase">Powered By Modern Tech</h3>
+            <h3 class="font-sans text-brand-cyan text-sm tracking-widest uppercase font-medium">Enterprise Technology Stack</h3>
         </div>
 
         <div class="relative flex overflow-x-hidden">
             <div class="animate-marquee whitespace-nowrap flex space-x-12 items-center">
                 <div v-for="(tech, index) in [...techStack, ...techStack]" :key="index"
-                    class="text-2xl font-bold flex items-center space-x-2 transition-transform hover:scale-110"
+                    class="text-2xl font-bold flex items-center space-x-2 transition-all duration-300 filter grayscale hover:grayscale-0 hover:scale-110 opacity-70 hover:opacity-100 cursor-default"
                     :style="{ color: tech.color }">
-                    <i :class="['ph', tech.icon]"></i>
-                    <span>{{ tech.name }}</span>
+                    <i :class="['ph', tech.icon, 'drop-shadow-lg']"></i>
+                    <span class="font-sans text-lg tracking-tight">{{ tech.name }}</span>
                 </div>
             </div>
         </div>

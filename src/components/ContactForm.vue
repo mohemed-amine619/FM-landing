@@ -62,12 +62,12 @@ const submitForm = async () => {
             <!-- Glass Card -->
             <div class="glass-card rounded-2xl p-8 md:p-12 relative overflow-hidden group">
 
-                <!-- Neon Corner Accents -->
+                <!-- Elegant Accents -->
                 <div
-                    class="absolute top-0 left-0 w-20 h-20 border-t-2 border-l-2 border-brand-cyan rounded-tl-2xl opacity-50 group-hover:opacity-100 transition-opacity">
+                    class="absolute top-0 left-0 w-32 h-[1px] bg-gradient-to-r from-brand-cyan to-transparent opacity-50 group-hover:opacity-100 transition-opacity">
                 </div>
                 <div
-                    class="absolute bottom-0 right-0 w-20 h-20 border-b-2 border-r-2 border-brand-green rounded-br-2xl opacity-50 group-hover:opacity-100 transition-opacity">
+                    class="absolute bottom-0 right-0 w-32 h-[1px] bg-gradient-to-l from-brand-green to-transparent opacity-50 group-hover:opacity-100 transition-opacity">
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
@@ -84,16 +84,13 @@ const submitForm = async () => {
                             Accepting New Projects
                         </div>
 
-                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight tracking-tight">
                             Start Your Next <br />
-                            <span
-                                class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-green">Big
-                                Project</span>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-green">Enterprise Project</span>
                         </h2>
 
-                        <p class="text-gray-400 mb-8 leading-relaxed">
-                            Ready to scale? We bridge the gap between complex requirements and elegant, high-performance
-                            code.
+                        <p class="text-slate-400 mb-8 leading-relaxed text-lg">
+                            Ready to scale? We bridge the gap between complex requirements and elegant, high-performance code.
                         </p>
 
                         <div class="flex items-center gap-3 text-sm text-gray-500 font-mono">
@@ -110,8 +107,8 @@ const submitForm = async () => {
                             <i
                                 class="ph ph-user absolute left-4 top-4 text-gray-500 group-focus-within/input:text-brand-cyan transition-colors"></i>
                             <input v-model="form.name" type="text" required
-                                class="w-full bg-brand-dark/50 border border-gray-700 rounded-lg py-3.5 pl-12 pr-4 text-white placeholder-gray-600 focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan focus:bg-brand-navy/80 transition-all outline-none"
-                                placeholder="Your Name">
+                                class="w-full bg-black/40 border border-white/10 rounded-lg py-3.5 pl-12 pr-4 text-white placeholder-gray-600 focus:border-brand-cyan/50 focus:ring-1 focus:ring-brand-cyan/50 focus:bg-black/60 transition-all outline-none"
+                                placeholder="Full Name">
                         </div>
 
                         <!-- Email Input -->
@@ -119,8 +116,8 @@ const submitForm = async () => {
                             <i
                                 class="ph ph-envelope absolute left-4 top-4 text-gray-500 group-focus-within/input:text-brand-cyan transition-colors"></i>
                             <input v-model="form.email" type="email" required
-                                class="w-full bg-brand-dark/50 border border-gray-700 rounded-lg py-3.5 pl-12 pr-4 text-white placeholder-gray-600 focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan focus:bg-brand-navy/80 transition-all outline-none"
-                                placeholder="name@company.com">
+                                class="w-full bg-black/40 border border-white/10 rounded-lg py-3.5 pl-12 pr-4 text-white placeholder-gray-600 focus:border-brand-cyan/50 focus:ring-1 focus:ring-brand-cyan/50 focus:bg-black/60 transition-all outline-none"
+                                placeholder="Work Email Address">
                         </div>
 
                         <!-- Message Input -->
@@ -128,17 +125,17 @@ const submitForm = async () => {
                             <i
                                 class="ph ph-chat-text absolute left-4 top-4 text-gray-500 group-focus-within/input:text-brand-cyan transition-colors"></i>
                             <textarea v-model="form.message" rows="4" required
-                                class="w-full bg-brand-dark/50 border border-gray-700 rounded-lg py-3.5 pl-12 pr-4 text-white placeholder-gray-600 focus:border-brand-green focus:ring-1 focus:ring-brand-green focus:bg-brand-navy/80 transition-all outline-none resize-none"
-                                placeholder="Tell us about your project goals..."></textarea>
+                                class="w-full bg-black/40 border border-white/10 rounded-lg py-3.5 pl-12 pr-4 text-white placeholder-gray-600 focus:border-brand-cyan/50 focus:ring-1 focus:ring-brand-cyan/50 focus:bg-black/60 transition-all outline-none resize-none"
+                                placeholder="Detail your project requirements..."></textarea>
                         </div>
 
                         <!-- Submit Button -->
                         <button type="submit" :disabled="isLoading"
-                            class="group relative w-full py-4 bg-gradient-to-r from-brand-cyan via-brand-blue to-brand-cyan bg-[length:200%_auto] text-white font-bold uppercase tracking-widest rounded-lg overflow-hidden transition-all hover:bg-[100%_center] hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] disabled:opacity-70 disabled:cursor-not-allowed">
+                            class="glow-button-primary w-full disabled:opacity-70 disabled:cursor-not-allowed group">
 
                             <span class="relative z-10 flex items-center justify-center gap-2">
                                 <i v-if="isLoading" class="ph ph-spinner animate-spin text-xl"></i>
-                                <span v-else>Ignite Your Project</span>
+                                <span v-else>Request Consultation</span>
                                 <i v-if="!isLoading"
                                     class="ph ph-arrow-right group-hover:translate-x-1 transition-transform"></i>
                             </span>
@@ -165,13 +162,6 @@ const submitForm = async () => {
 </template>
 
 <style scoped>
-.glass-card {
-    background: rgba(11, 18, 33, 0.7);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-}
-
 .animate-fade-in {
     animation: fadeIn 0.3s ease-out;
 }
