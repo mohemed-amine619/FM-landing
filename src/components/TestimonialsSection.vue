@@ -9,45 +9,45 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
     {
-        name: 'James Caldoni',
-        role: 'CTO',
-        company: 'FinStack Global',
-        content: 'I have worked with dozens of agencies, but Fullstack Master is different. Their code quality is cleaner than our in-house team. They didn\'t just build what we asked; they optimized our entire architecture for scale.',
+        name: 'Tarik M.',
+        role: 'Directeur Général',
+        company: 'Algiers',
+        content: 'Le système ERP sur mesure développé pour notre entreprise de plus de 40 employés a été une véritable révolution. Il a parfaitement rationalisé nos opérations internes et considérablement optimisé notre gestion quotidienne.',
         rating: 5
     },
     {
-        name: 'Sarah Chen',
-        role: 'Product Lead',
-        company: 'Orbit SaaS',
-        content: 'Deadlines are sacred to them. We launched our platform two weeks ahead of schedule. The Vue.js frontend is buttery smooth, and user retention has jumped 40% since the redesign.',
+        name: 'Amine B.',
+        role: 'Fondateur de Startup',
+        company: 'Oran',
+        content: 'L\'intégration de l\'API backend est d\'une fluidité remarquable. Le système de traitement sécurisé des paiements locaux via CIB et EDAHABIA fonctionne sans la moindre faille. Un travail d\'architecture de très haut niveau.',
         rating: 5
     },
     {
-        name: 'Michael Ross',
-        role: 'Founder',
-        company: 'AutoFlow Systems',
-        content: 'We were drowning in manual data entry. The automation workflows they built with Python and n8n saved us roughly $120k/year in operational costs. It is not just code; it is smart business logic.',
+        name: 'Karim S.',
+        role: 'Trader Indépendant',
+        company: 'Constantine',
+        content: 'Le bot Python créé sur mesure pour mon terminal MetaTrader 5 est d\'une précision redoutable. L\'exécution de mes stratégies algorithmiques sur le XAUUSD et le BTCUSDm est ultra-rapide et parfaitement fiable.',
         rating: 5
     },
     {
-        name: 'Elena V.',
+        name: 'Lydia A.',
+        role: 'Fondatrice d\'Agence Tech',
+        company: 'Algiers',
+        content: 'Nous sommes ravis de la livraison de notre nouveau tableau de bord. L\'interface est rapide, moderne et le résultat est totalement pixel-perfect. L\'expertise sur Vue.js et Tailwind CSS est indéniable.',
+        rating: 5
+    },
+    {
+        name: 'Yassine D.',
+        role: 'Directeur Technique',
+        company: 'Algiers',
+        content: 'La migration de notre infrastructure vers le cloud a été gérée de main de maître. La plateforme gère désormais des pics de trafic massifs sans aucun ralentissement.',
+        rating: 5
+    },
+    {
+        name: 'Nadia F.',
         role: 'CEO',
-        company: 'GreenScale',
-        content: 'They took our messy MVP and turned it into an enterprise-grade Laravel application. Security, performance, and scalability were handled perfectly. Investors were impressed during due diligence.',
-        rating: 5
-    },
-    {
-        name: 'David K.',
-        role: 'Director',
-        company: 'LuxeCommerce',
-        content: 'Speed equals revenue. After they optimized our Core Web Vitals and server response times, our conversion rate increased by 25% overnight. Best investment we have made this year.',
-        rating: 5
-    },
-    {
-        name: 'Amara Singh',
-        role: 'Head of Ops',
-        company: 'Nexus Logistics',
-        content: 'Communication was flawless. Daily updates, transparent workflows, and zero technical jargon. They felt like a true partner, not just hired hands. We are already planning Phase 2.',
+        company: 'Annaba',
+        content: 'Le système d\'analyse de données personnalisé qu\'ils ont conçu nous permet de prendre des décisions stratégiques en temps réel. L\'architecture backend est extrêmement robuste.',
         rating: 5
     }
 ];
@@ -57,12 +57,15 @@ const testimonials: Testimonial[] = [
     <section id="testimonials" class="py-24 relative z-10 overflow-hidden">
 
         <!-- Background Atmosphere (Glowing Orbs) -->
-        <div class="absolute inset-0 pointer-events-none opacity-40">
+        <div class="absolute inset-0 pointer-events-none opacity-80 mix-blend-screen">
             <div
-                class="absolute top-20 left-0 w-[500px] h-[500px] bg-brand-cyan/5 rounded-full blur-[100px] -translate-x-1/2">
+                class="absolute top-20 left-0 w-[500px] h-[500px] bg-brand-cyan/20 rounded-full blur-[120px] -translate-x-1/2 animate-pulse-glow">
             </div>
             <div
-                class="absolute bottom-20 right-0 w-[500px] h-[500px] bg-brand-green/5 rounded-full blur-[100px] translate-x-1/2">
+                class="absolute bottom-20 right-0 w-[500px] h-[500px] bg-brand-green/20 rounded-full blur-[120px] translate-x-1/2 animate-pulse-glow" style="animation-delay: 1.5s;">
+            </div>
+            <div
+                class="absolute top-1/2 left-1/2 w-[800px] h-[300px] bg-brand-purple/10 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2 animate-pulse-slow pointer-events-none">
             </div>
         </div>
 

@@ -28,11 +28,16 @@ export default {
         'marquee': 'marquee 20s linear infinite',
         'pulse-glow': 'pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+        'grid': 'grid 3s linear infinite',
       },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
+        },
+        grid: {
+          '0%': { transform: 'translateY(0)' },
+          '100%': { transform: 'translateY(4rem)' },
         },
         marquee: {
           '0%': { transform: 'translateX(0)' },

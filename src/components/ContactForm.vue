@@ -53,9 +53,9 @@ const submitForm = async () => {
 <template>
     <section id="contact" class="py-24 relative z-10 overflow-hidden">
         <!-- Background decorative elements -->
-        <div class="absolute top-0 right-0 w-96 h-96 bg-brand-cyan/5 blur-[100px] rounded-full pointer-events-none">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-cyan/20 mix-blend-screen blur-[150px] rounded-full pointer-events-none animate-pulse-glow">
         </div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-green/5 blur-[100px] rounded-full pointer-events-none">
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-green/20 mix-blend-screen blur-[150px] rounded-full pointer-events-none animate-pulse-glow" style="animation-delay: 2s;">
         </div>
 
         <div class="max-w-4xl mx-auto px-4 relative z-20">

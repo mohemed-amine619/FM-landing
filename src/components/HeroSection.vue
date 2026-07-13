@@ -6,10 +6,10 @@ const emit = defineEmits(['scroll-to']);
 // --- Typing Effect Logic ---
 const typingText = ref('');
 const phrases = [
-    'Scalable Web Solutions',
-    'Robust Laravel Backends',
-    'Interactive Vue Interfaces',
-    'Next-Gen Automation'
+    'Enterprise Management Systems',
+    'Scalable Digital Infrastructures',
+    'Quantitative Financial Solutions',
+    'Exceptional User Experiences'
 ];
 let phraseIndex = 0;
 let charIndex = 0;
@@ -57,11 +57,11 @@ onUnmounted(() => {
 <template>
     <section id="home" class="relative z-10 min-h-screen flex items-center justify-center pt-20 overflow-hidden">
 
-        <!-- 1. Background Grid Effect (Sophisticated) -->
+        <!-- 1. Background Grid Effect (Sophisticated & Moving) -->
         <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
             <!-- Grid Pattern -->
             <div
-                class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,#000_70%,transparent_100%)]">
+                class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_0%,#000_70%,transparent_100%)] animate-grid">
             </div>
             <!-- Ambient glow -->
             <div
@@ -72,8 +72,19 @@ onUnmounted(() => {
 
         <div class="max-w-7xl mx-auto px-4 text-center relative z-20">
 
+            <!-- Announcement Pill -->
+            <div class="animate-fade-in-up flex justify-center mb-8">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 backdrop-blur-md shadow-[0_0_15px_rgba(4,154,181,0.15)] text-sm font-medium text-brand-cyan">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-cyan opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-cyan"></span>
+                    </span>
+                    Available for New Enterprise Projects
+                </div>
+            </div>
+
             <!-- 2. Animated Logo Container -->
-            <div class="mb-10 relative inline-block group">
+            <div class="mb-10 relative inline-block group animate-float">
                 <!-- Dual-Layer Pulsing Glow -->
                 <div
                     class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180%] h-[180%] bg-brand-cyan/25 blur-[90px] rounded-full animate-pulse-slow pointer-events-none group-hover:bg-brand-cyan/40 transition-colors duration-700">
@@ -92,15 +103,14 @@ onUnmounted(() => {
 
             <!-- 3. Dynamic Typing Headline -->
             <div class="animate-fade-in-up">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 tracking-tight h-24 md:h-auto font-sans leading-tight">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 tracking-tight h-24 md:h-auto font-sans leading-tight drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]">
                     Engineering <span
-                        class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-green">{{
-                        typingText }}</span><span class="animate-blink text-brand-cyan">|</span>
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-brand-purple to-brand-green drop-shadow-[0_0_25px_rgba(4,154,181,0.6)]">{{
+                        typingText }}</span><span class="animate-blink text-brand-cyan drop-shadow-[0_0_15px_rgba(4,154,181,1)]">|</span>
                 </h1>
 
                 <p class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-slate-400 font-light leading-relaxed">
-                    We craft high-performance digital infrastructure for industry leaders, leveraging enterprise-grade <span
-                        class="text-white font-medium">Laravel</span> & <span class="text-white font-medium">Vue.js</span> architecture.
+                    We craft high-performance digital infrastructure for ambitious businesses. From complex <span class="text-white font-medium">enterprise systems</span> and scalable <span class="text-white font-medium">backend architectures</span> to advanced <span class="text-white font-medium">algorithmic solutions</span>, we build platforms that drive measurable growth.
                 </p>
             </div>
 

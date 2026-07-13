@@ -3,40 +3,28 @@ import type { Service } from '../types';
 
 const services: Service[] = [
     {
-        title: 'Fullstack Development',
-        desc: 'Complete web solutions using Vue, React, Laravel and scalable cloud infrastructure.',
-        icon: 'ph-code',
-        tags: ['Vue.js', 'React', 'Laravel', 'PostgreSQL']
+        title: 'Enterprise Web Applications & ERPs',
+        desc: 'Development of custom management systems and complex business logic, designed to streamline internal operations.',
+        icon: 'ph-buildings',
+        tags: ['Laravel', 'Vue.js']
     },
     {
-        title: 'UI/UX Design',
-        desc: 'Cyberpunk, minimalist, or corporate. We craft interfaces that users love to interact with.',
-        icon: 'ph-paint-brush',
-        tags: ['Figma', 'Tailwind', 'Motion', 'Prototyping']
+        title: 'Scalable Backend Architecture & APIs',
+        desc: 'Engineering robust API designs, advanced data logic, and seamless third-party integrations to power highly scalable systems.',
+        icon: 'ph-database',
+        tags: ['Go', 'Laravel']
     },
     {
-        title: 'Mobile Engineering',
-        desc: 'Cross-platform mobile applications that perform like native on iOS and Android.',
-        icon: 'ph-device-mobile',
-        tags: ['React Native', 'Flutter', 'iOS', 'Android']
+        title: 'Quantitative Trading Solutions',
+        desc: 'Custom algorithm design, automated bot architecture, and precise execution scripts tailored for high-performance financial strategies.',
+        icon: 'ph-chart-line-up',
+        tags: ['Python', 'MetaTrader 5']
     },
     {
-        title: 'Automation & AI',
-        desc: 'Streamline operations with custom Python scripts, n8n workflows, and AI integration.',
-        icon: 'ph-robot',
-        tags: ['Python', 'n8n', 'OpenAI', 'Zapier']
-    },
-    {
-        title: 'Cloud & DevOps',
-        desc: 'Secure, scalable infrastructure design with automated CI/CD deployment pipelines.',
-        icon: 'ph-cloud-arrow-up',
-        tags: ['AWS', 'Docker', 'Kubernetes', 'GitHub Actions']
-    },
-    {
-        title: 'SEO & Performance',
-        desc: 'Technical SEO optimization and speed enhancements for maximum visibility.',
-        icon: 'ph-rocket-launch',
-        tags: ['Core Web Vitals', 'Analytics', 'PageSpeed', 'SSR']
+        title: 'Modern Frontend Development',
+        desc: 'Creation of pixel-perfect, highly interactive, and fully responsive user interfaces focusing on exceptional user experiences.',
+        icon: 'ph-desktop',
+        tags: ['Vue.js', 'Tailwind CSS']
     }
 ];
 </script>
@@ -49,8 +37,8 @@ const services: Service[] = [
                 <p class="text-gray-400 font-sans text-lg font-light">End-to-end development & infrastructure</p>
             </div>
 
-            <!-- Updated grid to 3 columns on large screens for better balance with 6 items -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Updated grid to 2 columns on large screens for better balance with 4 items -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                 <div v-for="(service, index) in services" :key="index"
                     class="glass-card p-6 rounded-xl group relative overflow-hidden h-full flex flex-col">
                     <!-- Hover Glow -->
@@ -59,8 +47,8 @@ const services: Service[] = [
                     </div>
 
                     <div
-                        class="mb-6 inline-block p-3 rounded-xl bg-white/[0.03] border border-white/[0.05] text-brand-cyan group-hover:text-brand-green group-hover:bg-white/[0.05] transition-all duration-300 w-fit">
-                        <i :class="['ph', service.icon, 'text-3xl']"></i>
+                        class="mb-6 inline-block p-3 rounded-xl bg-white/[0.03] border border-white/[0.05] text-brand-cyan group-hover:text-brand-green group-hover:bg-brand-cyan/20 group-hover:border-brand-cyan/50 group-hover:shadow-[0_0_30px_rgba(4,154,181,0.8)] transition-all duration-500 w-fit">
+                        <i :class="['ph', service.icon, 'text-3xl group-hover:animate-pulse']"></i>
                     </div>
 
                     <h3 class="text-xl font-semibold text-white mb-3 group-hover:text-gray-200 transition-colors">{{
