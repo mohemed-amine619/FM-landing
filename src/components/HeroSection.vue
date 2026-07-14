@@ -48,7 +48,6 @@ const type = () => {
 // --- Advanced Interactive Refs ---
 const parallaxContainer = ref<HTMLElement | null>(null);
 const logoCardRef = ref<HTMLElement | null>(null);
-const spotlightRef = ref<HTMLElement | null>(null);
 const titleRef = ref<HTMLElement | null>(null);
 const subtitleRef = ref<HTMLElement | null>(null);
 const pillRef = ref<HTMLElement | null>(null);
@@ -121,11 +120,8 @@ onUnmounted(() => {
 <template>
     <section id="home" ref="parallaxContainer" class="relative z-10 min-h-[100svh] flex items-center justify-center pt-20 pb-10 overflow-hidden">
         
-        <!-- Interactive Spotlight -->
-        <div ref="spotlightRef" class="pointer-events-none fixed top-0 left-0 w-[600px] h-[600px] rounded-full opacity-40 z-0 -translate-x-1/2 -translate-y-1/2 transform-gpu will-change-transform" style="background: radial-gradient(circle, rgba(4,154,181,0.2) 0%, rgba(37,220,125,0.05) 40%, transparent 70%);"></div>
-
-        <!-- 1. Floating Glass Orbs -->
-        <div class="absolute inset-0 pointer-events-none z-0">
+        <!-- Decorative Shapes -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
             <!-- Large Frosted Orb -->
             <div data-depth="0.3" class="hero-shape absolute top-[20%] left-[10%] w-32 h-32 rounded-full border border-white/10 bg-gradient-to-br from-brand-cyan/20 to-transparent backdrop-blur-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_10px_40px_-10px_rgba(4,154,181,0.3)]"></div>
             
