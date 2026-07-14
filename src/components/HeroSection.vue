@@ -53,82 +53,8 @@ const titleRef = ref<HTMLElement | null>(null);
 const subtitleRef = ref<HTMLElement | null>(null);
 const pillRef = ref<HTMLElement | null>(null);
 
-const handleMouseMove = (e: MouseEvent) => {
-    if (!parallaxContainer.value) return;
-    const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-
-    // Normalized coordinates (-1 to 1)
-    const xPos = (clientX / innerWidth - 0.5) * 2;
-    const yPos = (clientY / innerHeight - 0.5) * 2;
-
-    // 1. Dynamic Parallax Shapes (using GSAP class selector)
-    gsap.utils.toArray('.hero-shape').forEach((shape: any) => {
-        const depth = Number(shape.dataset.depth || 1);
-        gsap.to(shape, {
-            x: xPos * 60 * depth,
-            y: yPos * 60 * depth,
-            rotation: xPos * 15 * depth,
-            duration: 1.2,
-            ease: 'power3.out'
-        });
-    });
-
-    // 2. 3D Tilt on Logo Card
-    if (logoCardRef.value) {
-        gsap.to(logoCardRef.value, {
-            rotationY: xPos * 12,
-            rotationX: -yPos * 12,
-            transformPerspective: 1000,
-            ease: 'power2.out',
-            duration: 0.8
-        });
-    }
-
-    // 3. Spotlight Tracking
-    if (spotlightRef.value) {
-        gsap.to(spotlightRef.value, {
-            x: clientX,
-            y: clientY,
-            duration: 1.0,
-            ease: 'power2.out'
-        });
-    }
-
-    // 4. Magnetic Buttons (using GSAP class selector)
-    gsap.utils.toArray('.hero-btn').forEach((btn: any) => {
-        const rect = btn.getBoundingClientRect();
-        const btnX = rect.left + rect.width / 2;
-        const btnY = rect.top + rect.height / 2;
-        
-        // Calculate distance
-        const distanceX = clientX - btnX;
-        const distanceY = clientY - btnY;
-        const maxDistance = 100; // Activation radius
-
-        if (Math.abs(distanceX) < maxDistance && Math.abs(distanceY) < maxDistance) {
-            // Pull the button towards the cursor
-            gsap.to(btn, {
-                x: distanceX * 0.3,
-                y: distanceY * 0.3,
-                duration: 0.8,
-                ease: 'power2.out'
-            });
-        } else {
-            // Reset position
-            gsap.to(btn, {
-                x: 0,
-                y: 0,
-                duration: 1.2,
-                ease: 'elastic.out(1, 0.3)'
-            });
-        }
-    });
-};
-
 onMounted(() => {
     timeoutId = setTimeout(type, 1500); // Start typing after reveal
-    window.addEventListener('mousemove', handleMouseMove);
 
     // Initial float animation for the glass shapes
     gsap.utils.toArray('.hero-shape').forEach((shape: any, i: number) => {
@@ -189,7 +115,6 @@ onMounted(() => {
 
 onUnmounted(() => {
     clearTimeout(timeoutId);
-    window.removeEventListener('mousemove', handleMouseMove);
 });
 </script>
 
