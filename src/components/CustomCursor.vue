@@ -5,26 +5,19 @@ import gsap from 'gsap';
 const cursorRef = ref<HTMLElement | null>(null);
 const cursorDotRef = ref<HTMLElement | null>(null);
 
-let mouseX = 0;
-let mouseY = 0;
+let xTo: any;
+let yTo: any;
+let xDotTo: any;
+let yDotTo: any;
 
 const onMouseMove = (e: MouseEvent) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    
-    gsap.to(cursorRef.value, {
-        x: mouseX - 16, // Center offset
-        y: mouseY - 16,
-        duration: 1.2,
-        ease: 'power3.out'
-    });
-
-    gsap.to(cursorDotRef.value, {
-        x: mouseX - 4,
-        y: mouseY - 4,
-        duration: 0.1,
-        ease: 'power3.out'
-    });
+    // gsap.quickTo is infinitely faster than gsap.to for mouse tracking
+    if (xTo && yTo && xDotTo && yDotTo) {
+        xTo(e.clientX - 16);
+        yTo(e.clientY - 16);
+        xDotTo(e.clientX - 4);
+        yDotTo(e.clientY - 4);
+    }
 };
 
 const onMouseEnterHoverable = () => {
@@ -36,7 +29,13 @@ const onMouseLeaveHoverable = () => {
 };
 
 onMounted(() => {
-    window.addEventListener('mousemove', onMouseMove);
+    // Initialize quickTo for maximum FPS
+    xTo = gsap.quickTo(cursorRef.value, "x", { duration: 0.8, ease: "power3.out" });
+    yTo = gsap.quickTo(cursorRef.value, "y", { duration: 0.8, ease: "power3.out" });
+    xDotTo = gsap.quickTo(cursorDotRef.value, "x", { duration: 0.1, ease: "power3.out" });
+    yDotTo = gsap.quickTo(cursorDotRef.value, "y", { duration: 0.1, ease: "power3.out" });
+
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
     
     // Add hover effect to all buttons and links
     document.querySelectorAll('a, button, input, textarea, .glass-card').forEach(el => {
@@ -56,8 +55,8 @@ onUnmounted(() => {
 
 <template>
     <div class="pointer-events-none fixed inset-0 z-[9999] overflow-hidden hidden md:block">
-        <div ref="cursorRef" class="absolute top-0 left-0 w-8 h-8 rounded-full border border-white/20 transition-colors backdrop-blur-[2px]"></div>
-        <div ref="cursorDotRef" class="absolute top-0 left-0 w-2 h-2 rounded-full bg-brand-cyan drop-shadow-[0_0_5px_rgba(4,154,181,1)]"></div>
+        <div ref="cursorRef" class="absolute top-0 left-0 w-8 h-8 rounded-full border border-white/20 transition-colors transform-gpu will-change-transform"></div>
+        <div ref="cursorDotRef" class="absolute top-0 left-0 w-2 h-2 rounded-full bg-brand-cyan shadow-[0_0_10px_rgba(4,154,181,0.8)] transform-gpu will-change-transform"></div>
     </div>
 </template>
 

@@ -8,7 +8,7 @@ const numbersRef = ref<HTMLElement[]>([]);
 const stats = [
     { label: 'Global Clients', value: 35, suffix: '+', prefix: '' },
     { label: 'Enterprise Systems Architected', value: 120, suffix: '', prefix: '' },
-    { label: 'Revenue Generated', value: 50, suffix: 'M+', prefix: '$' },
+    { label: 'API Requests Scaled', value: 250, suffix: 'M+', prefix: '' },
     { label: 'System Uptime', value: 99.99, suffix: '%', prefix: '' }
 ];
 
