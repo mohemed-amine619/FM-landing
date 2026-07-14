@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
 interface Testimonial {
     name: string;
     role: string;
@@ -7,128 +13,152 @@ interface Testimonial {
     rating: number;
 }
 
-const testimonials: Testimonial[] = [
+const allTestimonials: Testimonial[] = [
     {
-        name: 'Tarik M.',
+        name: 'Tarek M.',
         role: 'Directeur Général',
-        company: 'Algiers',
-        content: 'Le système ERP sur mesure développé pour notre entreprise de plus de 40 employés a été une véritable révolution. Il a parfaitement rationalisé nos opérations internes et considérablement optimisé notre gestion quotidienne.',
+        company: 'Private Client',
+        content: 'L\'infrastructure cloud sur mesure développée pour notre gestion des données a été une véritable révolution. La fiabilité et la sécurité de l\'architecture sont d\'un niveau exceptionnel.',
+        rating: 5
+    },
+    {
+        name: 'Sarah L.',
+        role: 'VP of Engineering',
+        company: 'Tech Startup',
+        content: 'The architectural decisions made by him were spot on. We were able to scale our backend to handle millions of real-time requests without a single downtime incident. His DevOps expertise is unmatched.',
         rating: 5
     },
     {
         name: 'Amine B.',
-        role: 'Fondateur de Startup',
-        company: 'Oran',
-        content: 'L\'intégration de l\'API backend est d\'une fluidité remarquable. Le système de traitement sécurisé des paiements locaux via CIB et EDAHABIA fonctionne sans la moindre faille. Un travail d\'architecture de très haut niveau.',
+        role: 'Directeur Systèmes d\'Information',
+        company: 'Financial Services',
+        content: 'L\'intégration de notre nouvelle API est d\'une fluidité remarquable. Le système de traitement sécurisé des paiements fonctionne sans la moindre faille. Un travail d\'architecture de très haut niveau.',
+        rating: 5
+    },
+    {
+        name: 'Elena R.',
+        role: 'Product Manager',
+        company: 'Enterprise Client',
+        content: 'We needed a highly scalable backend to handle our massive user base. The final product exceeded our expectations. The real-time data processing is flawless and highly optimized.',
         rating: 5
     },
     {
         name: 'Karim S.',
-        role: 'Trader Indépendant',
-        company: 'Constantine',
-        content: 'Le bot Python créé sur mesure pour mon terminal MetaTrader 5 est d\'une précision redoutable. L\'exécution de mes stratégies algorithmiques sur le XAUUSD et le BTCUSDm est ultra-rapide et parfaitement fiable.',
+        role: 'CTO',
+        company: 'SaaS Platform',
+        content: 'La refonte de notre plateforme de services a été gérée de main de maître. La nouvelle infrastructure gère désormais des pics de trafic massifs lors de nos lancements sans aucun ralentissement.',
         rating: 5
     },
     {
         name: 'Lydia A.',
         role: 'Fondatrice d\'Agence Tech',
-        company: 'Algiers',
-        content: 'Nous sommes ravis de la livraison de notre nouveau tableau de bord. L\'interface est rapide, moderne et le résultat est totalement pixel-perfect. L\'expertise sur Vue.js et Tailwind CSS est indéniable.',
-        rating: 5
-    },
-    {
-        name: 'Yassine D.',
-        role: 'Directeur Technique',
-        company: 'Algiers',
-        content: 'La migration de notre infrastructure vers le cloud a été gérée de main de maître. La plateforme gère désormais des pics de trafic massifs sans aucun ralentissement.',
-        rating: 5
-    },
-    {
-        name: 'Nadia F.',
-        role: 'CEO',
-        company: 'Annaba',
-        content: 'Le système d\'analyse de données personnalisé qu\'ils ont conçu nous permet de prendre des décisions stratégiques en temps réel. L\'architecture backend est extrêmement robuste.',
+        company: 'Digital Agency',
+        content: 'Nous sommes ravis de la livraison de notre nouveau tableau de bord. L\'interface est rapide, moderne et le résultat est totalement pixel-perfect. L\'expertise technique est indéniable.',
         rating: 5
     }
 ];
+
+// Split into two rows for the marquee
+const row1 = allTestimonials.slice(0, 3);
+const row2 = allTestimonials.slice(3, 6);
+
+const sectionRef = ref(null);
+const headerRef = ref(null);
+
+onMounted(() => {
+    // Header Reveal
+    gsap.fromTo(headerRef.value, 
+        { y: -30, opacity: 0 }, 
+        { 
+            y: 0, opacity: 1, duration: 0.4, ease: "power3.out",
+            scrollTrigger: { trigger: sectionRef.value, start: "top 80%" }
+        }
+    );
+});
 </script>
 
 <template>
-    <section id="testimonials" class="py-24 relative z-10 overflow-hidden">
+    <section id="testimonials" ref="sectionRef" class="py-24 relative z-10 overflow-hidden bg-black/20 border-y border-white/[0.02]">
 
+        <!-- Glow Accents -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[1px] bg-gradient-to-r from-transparent via-brand-cyan/20 to-transparent"></div>
         <!-- Background Atmosphere (Glowing Orbs) -->
-        <div class="absolute inset-0 pointer-events-none opacity-80 mix-blend-screen">
+        <div class="absolute inset-0 pointer-events-none opacity-50 mix-blend-screen transform-gpu will-change-transform">
             <div
-                class="absolute top-20 left-0 w-[500px] h-[500px] bg-brand-cyan/20 rounded-full blur-[120px] -translate-x-1/2 animate-pulse-glow">
+                class="absolute top-20 left-0 w-[500px] h-[500px] rounded-full -translate-x-1/2 animate-pulse-glow"
+                style="background: radial-gradient(circle, rgba(4,154,181,0.15) 0%, transparent 60%);">
             </div>
             <div
-                class="absolute bottom-20 right-0 w-[500px] h-[500px] bg-brand-green/20 rounded-full blur-[120px] translate-x-1/2 animate-pulse-glow" style="animation-delay: 1.5s;">
+                class="absolute bottom-20 right-0 w-[500px] h-[500px] rounded-full translate-x-1/2 animate-pulse-glow" style="animation-delay: 1.5s; background: radial-gradient(circle, rgba(37,220,125,0.15) 0%, transparent 60%);">
             </div>
             <div
-                class="absolute top-1/2 left-1/2 w-[800px] h-[300px] bg-brand-purple/10 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2 animate-pulse-slow pointer-events-none">
+                class="absolute top-1/2 left-1/2 w-[800px] h-[300px] rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse-slow pointer-events-none"
+                style="background: radial-gradient(ellipse, rgba(129,140,248,0.1) 0%, transparent 60%);">
             </div>
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
             <!-- Section Header -->
-            <div class="text-center mb-16 relative">
-                <div class="inline-block relative">
-                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-green">/</span> Client Intel
-                    </h2>
+            <div ref="headerRef" class="text-center mb-20">
+                <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/10 bg-white/[0.02] backdrop-blur-md mb-6">
+                    <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
+                    <span class="text-xs font-mono text-brand-cyan uppercase tracking-widest">Client Intel</span>
                 </div>
-                <p class="text-slate-400 font-sans text-lg mt-4 max-w-2xl mx-auto font-light">
-                    Transmission logs from secured enterprise collaborations. <br class="hidden md:block" />
-                    <span class="text-brand-cyan text-sm mt-2 block font-medium">Status: 100% Satisfied</span>
-                </p>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
+                    Trusted by <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-green">Industry Leaders</span>
+                </h2>
             </div>
+        </div>
 
-            <!-- Testimonials Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                <div v-for="(item, index) in testimonials" :key="index"
-                    class="glass-card p-8 rounded-2xl relative group flex flex-col h-full overflow-hidden">
+        <!-- Infinite Marquee Section -->
+        <div class="relative w-full flex flex-col gap-6 md:gap-8 overflow-hidden py-4">
+            <!-- Left Gradient Fade -->
+            <div class="absolute top-0 left-0 w-24 md:w-64 h-full bg-gradient-to-r from-[#0a0a0a] to-transparent z-20 pointer-events-none"></div>
+            <!-- Right Gradient Fade -->
+            <div class="absolute top-0 right-0 w-24 md:w-64 h-full bg-gradient-to-l from-[#0a0a0a] to-transparent z-20 pointer-events-none"></div>
 
-                    <!-- Top Gradient Line -->
-                    <div
-                        class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-cyan/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    </div>
-
-                    <!-- Decorative Quote Icon (Background Watermark) -->
-                    <div
-                        class="absolute -top-4 -right-4 text-8xl text-white/[0.02] font-serif leading-none select-none pointer-events-none group-hover:text-brand-cyan/[0.05] transition-colors duration-500">
-                        "
-                    </div>
-
-                    <!-- Stars -->
-                    <div class="flex gap-1 mb-6 relative z-10">
-                        <i v-for="n in 5" :key="n" class="ph-fill ph-star text-sm transition-colors duration-300"
-                            :class="n <= item.rating ? 'text-brand-cyan drop-shadow-[0_0_8px_rgba(4,154,181,0.4)]' : 'text-gray-800'">
-                        </i>
-                    </div>
-
-                    <!-- Content -->
-                    <div class="flex-grow relative z-10">
-                        <p
-                            class="text-gray-300 leading-relaxed font-light text-lg group-hover:text-white transition-colors duration-300">
+            <!-- Row 1: Marquee Left -->
+            <div class="flex marquee-left w-max hover-pause">
+                <div class="flex gap-6 md:gap-8 px-3 md:px-4 shrink-0" v-for="n in 3" :key="'r1-'+n">
+                    <!-- Duplicate the items to create seamless loop -->
+                    <div v-for="(item, index) in row1" :key="index" class="glass-card w-[320px] md:w-[450px] p-6 md:p-8 rounded-3xl flex flex-col relative group border border-white/[0.05] hover:border-brand-cyan/30 transition-colors duration-500">
+                        <div class="flex gap-1 mb-4">
+                            <i v-for="star in 5" :key="star" class="ph-fill ph-star text-sm md:text-base text-brand-cyan drop-shadow-[0_0_5px_rgba(4,154,181,0.5)]"></i>
+                        </div>
+                        <p class="text-gray-300 font-light text-base md:text-lg leading-relaxed flex-grow mb-8">
                             "{{ item.content }}"
                         </p>
-                    </div>
-
-                    <!-- Author Info -->
-                    <div
-                        class="flex items-center gap-4 mt-8 pt-6 border-t border-white/[0.05] relative z-10 transition-colors">
-                        <!-- Avatar / Initials -->
-                        <div
-                            class="w-12 h-12 rounded-full bg-black/50 border border-white/10 flex items-center justify-center relative overflow-hidden group-hover:border-brand-cyan/50 transition-colors">
-                            <span class="text-brand-cyan font-medium font-sans text-lg relative z-10">{{
-                                item.name.charAt(0) }}</span>
+                        <div class="flex items-center gap-4 mt-auto">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-brand-cyan/20 to-brand-green/20 border border-white/10 flex items-center justify-center">
+                                <span class="text-white font-bold">{{ item.name.charAt(0) }}</span>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold tracking-wide">{{ item.name }}</h4>
+                                <p class="text-xs md:text-sm text-gray-500 font-mono mt-1">{{ item.role }} @ <span class="text-brand-cyan">{{ item.company }}</span></p>
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </div>
 
-                        <div>
-                            <h4 class="text-white font-semibold text-sm tracking-wide">{{ item.name }}</h4>
-                            <p class="text-xs text-gray-400 font-sans font-light mt-0.5">{{ item.role }} <span
-                                    class="text-gray-600">@</span> {{ item.company }}</p>
+            <!-- Row 2: Marquee Right -->
+            <div class="flex marquee-right w-max hover-pause mt-4">
+                <div class="flex gap-6 md:gap-8 px-3 md:px-4 shrink-0" v-for="n in 3" :key="'r2-'+n">
+                    <div v-for="(item, index) in row2" :key="index" class="glass-card w-[320px] md:w-[450px] p-6 md:p-8 rounded-3xl flex flex-col relative group border border-white/[0.05] hover:border-brand-green/30 transition-colors duration-500">
+                        <div class="flex gap-1 mb-4">
+                            <i v-for="star in 5" :key="star" class="ph-fill ph-star text-sm md:text-base text-brand-green drop-shadow-[0_0_5px_rgba(37,220,125,0.5)]"></i>
+                        </div>
+                        <p class="text-gray-300 font-light text-base md:text-lg leading-relaxed flex-grow mb-8">
+                            "{{ item.content }}"
+                        </p>
+                        <div class="flex items-center gap-4 mt-auto">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-brand-green/20 to-brand-cyan/20 border border-white/10 flex items-center justify-center">
+                                <span class="text-white font-bold">{{ item.name.charAt(0) }}</span>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold tracking-wide">{{ item.name }}</h4>
+                                <p class="text-xs md:text-sm text-gray-500 font-mono mt-1">{{ item.role }} @ <span class="text-brand-green">{{ item.company }}</span></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -139,5 +169,41 @@ const testimonials: Testimonial[] = [
 </template>
 
 <style scoped>
-/* Scoped styles omitted, using global glass-card */
+/* Infinite Marquee Animations */
+.marquee-left {
+    animation: scroll-left 40s linear infinite;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.marquee-right {
+    /* To scroll right natively, we start from a negative translate and go to 0 */
+    animation: scroll-right 40s linear infinite;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Pause animation on hover */
+.hover-pause:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Translate left by exactly one set of the items (-33.33% because we duplicate 3 times) */
+        transform: translateX(calc(-33.33333%));
+    }
+}
+
+@keyframes scroll-right {
+    0% {
+        transform: translateX(calc(-33.33333%));
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
 </style>

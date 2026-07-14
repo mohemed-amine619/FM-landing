@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import type { NavItem } from '../types';
 
+const emit = defineEmits(['scroll-to']);
 const isMobileMenuOpen = ref(false);
 const isScrolled = ref(false);
 
@@ -17,11 +18,8 @@ const handleScroll = () => {
 };
 
 const scrollTo = (id: string) => {
-    const el = document.querySelector(id);
-    if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-        isMobileMenuOpen.value = false;
-    }
+    emit('scroll-to', id);
+    isMobileMenuOpen.value = false;
 };
 
 onMounted(() => window.addEventListener('scroll', handleScroll));

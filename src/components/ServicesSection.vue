@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
 import type { Service } from '../types';
+import gsap from 'gsap';
 
 const services: Service[] = [
     {
@@ -27,19 +29,43 @@ const services: Service[] = [
         tags: ['Vue.js', 'Tailwind CSS']
     }
 ];
+
+const sectionRef = ref(null);
+const headerRef = ref(null);
+const cardsRef = ref<HTMLElement[]>([]);
+
+onMounted(() => {
+    // Header Blur to Sharp Reveal
+    gsap.fromTo(headerRef.value, 
+        { y: 50, opacity: 0, filter: 'blur(10px)' }, 
+        { 
+            y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.5, ease: "power3.out",
+            scrollTrigger: { trigger: headerRef.value, start: "top 85%" }
+        }
+    );
+
+    // Cards Staggered Fade Up
+    gsap.fromTo(cardsRef.value, 
+        { y: 80, opacity: 0, scale: 0.95 }, 
+        { 
+            y: 0, opacity: 1, scale: 1, duration: 0.4, stagger: 0.055, ease: "back.out(1.2)",
+            scrollTrigger: { trigger: sectionRef.value, start: "top 75%" }
+        }
+    );
+});
 </script>
 
 <template>
-    <section id="services" class="py-24 relative z-10">
+    <section id="services" ref="sectionRef" class="py-24 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+            <div ref="headerRef" class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight"><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-green">/</span> Capabilities</h2>
                 <p class="text-gray-400 font-sans text-lg font-light">End-to-end development & infrastructure</p>
             </div>
 
             <!-- Updated grid to 2 columns on large screens for better balance with 4 items -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                <div v-for="(service, index) in services" :key="index"
+                <div v-for="(service, index) in services" :key="index" ref="cardsRef"
                     class="glass-card p-6 rounded-xl group relative overflow-hidden h-full flex flex-col">
                     <!-- Hover Glow -->
                     <div

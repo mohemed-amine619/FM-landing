@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
+import gsap from 'gsap';
+
 interface Project {
     title: string;
     category: string;
@@ -34,14 +37,38 @@ const projects: Project[] = [
         link: '#'
     }
 ];
+
+const sectionRef = ref(null);
+const headerRef = ref(null);
+const projectsRef = ref<HTMLElement[]>([]);
+
+onMounted(() => {
+    // Header Reveal
+    gsap.fromTo(headerRef.value, 
+        { x: -50, opacity: 0 }, 
+        { 
+            x: 0, opacity: 1, duration: 0.4, ease: "power3.out",
+            scrollTrigger: { trigger: sectionRef.value, start: "top 80%" }
+        }
+    );
+
+    // Projects Staggered Reveal
+    gsap.fromTo(projectsRef.value, 
+        { y: 100, opacity: 0 }, 
+        { 
+            y: 0, opacity: 1, duration: 0.5, stagger: 0.05, ease: "power4.out",
+            scrollTrigger: { trigger: sectionRef.value, start: "top 70%" }
+        }
+    );
+});
 </script>
 
 <template>
-    <section id="portfolio" class="py-24 relative z-10">
+    <section id="portfolio" ref="sectionRef" class="py-24 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <!-- Header -->
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div ref="headerRef" class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                 <div>
                     <h2 class="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-green">/</span> Selected Work
@@ -52,7 +79,7 @@ const projects: Project[] = [
 
             <!-- Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div v-for="(project, index) in projects" :key="index"
+                <div v-for="(project, index) in projects" :key="index" ref="projectsRef"
                     class="group relative rounded-xl overflow-hidden glass-card h-full flex flex-col">
 
                     <!-- Image Area with Overlay -->
