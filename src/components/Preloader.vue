@@ -11,14 +11,14 @@ onMounted(() => {
     const tl = gsap.timeline({
         onComplete: () => {
             emit('loaded');
-            gsap.to(preloaderRef.value, { yPercent: -100, duration: 0.4, ease: 'power4.inOut' });
+            gsap.to(preloaderRef.value, { yPercent: -100, duration: 0.8, ease: 'power4.inOut' });
         }
     });
 
     // Logo pulse and progress bar fill
-    tl.to(logoRef.value, { scale: 1.1, duration: 0.6, ease: 'power2.out' })
-      .to(progressRef.value, { width: '100%', duration: 0.6, ease: 'power2.inOut' }, '<')
-      .to(logoRef.value, { scale: 0, opacity: 0, duration: 0.5, ease: 'back.in(1.5)' }, '+=0.2');
+    tl.to(logoRef.value, { scale: 1.1, duration: 1.2, ease: 'power2.out' })
+      .to(progressRef.value, { width: '100%', duration: 1.2, ease: 'power2.inOut' }, '<')
+      .to(logoRef.value, { scale: 0, opacity: 0, duration: 1.0, ease: 'back.in(1.5)' }, '+=0.2');
 });
 </script>
 

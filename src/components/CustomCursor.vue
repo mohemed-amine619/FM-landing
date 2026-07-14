@@ -15,7 +15,7 @@ const onMouseMove = (e: MouseEvent) => {
     gsap.to(cursorRef.value, {
         x: mouseX - 16, // Center offset
         y: mouseY - 16,
-        duration: 0.6,
+        duration: 1.2,
         ease: 'power3.out'
     });
 

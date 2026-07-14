@@ -39,7 +39,7 @@ onMounted(() => {
     gsap.fromTo(headerRef.value, 
         { y: 50, opacity: 0, filter: 'blur(10px)' }, 
         { 
-            y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.5, ease: "power3.out",
+            y: 0, opacity: 1, filter: 'blur(0px)', duration: 1.0, ease: "power3.out",
             scrollTrigger: { trigger: headerRef.value, start: "top 85%" }
         }
     );
@@ -48,7 +48,7 @@ onMounted(() => {
     gsap.fromTo(cardsRef.value, 
         { y: 80, opacity: 0, scale: 0.95 }, 
         { 
-            y: 0, opacity: 1, scale: 1, duration: 0.4, stagger: 0.055, ease: "back.out(1.2)",
+            y: 0, opacity: 1, scale: 1, duration: 0.8, stagger: 0.15, ease: "back.out(1.2)",
             scrollTrigger: { trigger: sectionRef.value, start: "top 75%" }
         }
     );

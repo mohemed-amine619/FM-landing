@@ -16,7 +16,7 @@ onMounted(() => {
     // Reveal animation
     gsap.fromTo(sectionRef.value, 
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out', scrollTrigger: { trigger: sectionRef.value, start: 'top 85%' } }
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: sectionRef.value, start: 'top 85%' } }
     );
 
     // Number counting animation

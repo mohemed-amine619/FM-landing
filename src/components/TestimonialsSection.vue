@@ -70,7 +70,7 @@ onMounted(() => {
     gsap.fromTo(headerRef.value, 
         { y: -30, opacity: 0 }, 
         { 
-            y: 0, opacity: 1, duration: 0.4, ease: "power3.out",
+            y: 0, opacity: 1, duration: 0.8, ease: "power3.out",
             scrollTrigger: { trigger: sectionRef.value, start: "top 80%" }
         }
     );
