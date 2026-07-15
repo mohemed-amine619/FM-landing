@@ -1,7 +1,7 @@
 import os
 import glob
 
-components_dir = "/home/mohamed.bougrioua@beyn.dz/Bureau/my-project/fm-landing/src/components"
+components_dir = os.path.join(os.path.dirname(__file__), "src", "components")
 vue_files = glob.glob(os.path.join(components_dir, "*.vue"))
 
 for file_path in vue_files:

@@ -68,7 +68,7 @@ const handleMouseMove = (e: MouseEvent) => {
             x: xPos * 60 * depth,
             y: yPos * 60 * depth,
             rotation: xPos * 15 * depth,
-            duration: 1.2,
+            duration: 2.5,
             ease: 'power3.out'
         });
     });
@@ -80,7 +80,7 @@ const handleMouseMove = (e: MouseEvent) => {
             rotationX: -yPos * 12,
             transformPerspective: 1000,
             ease: 'power2.out',
-            duration: 0.8
+            duration: 1.5
         });
     }
 
@@ -100,7 +100,7 @@ const handleMouseMove = (e: MouseEvent) => {
             gsap.to(btn, {
                 x: distanceX * 0.3,
                 y: distanceY * 0.3,
-                duration: 0.8,
+                duration: 1.5,
                 ease: 'power2.out'
             });
         } else {
@@ -108,7 +108,7 @@ const handleMouseMove = (e: MouseEvent) => {
             gsap.to(btn, {
                 x: 0,
                 y: 0,
-                duration: 1.2,
+                duration: 2.5,
                 ease: 'elastic.out(1, 0.3)'
             });
         }
@@ -138,14 +138,14 @@ onMounted(() => {
     if (pillRef.value) {
         tl.fromTo(pillRef.value, 
             { y: 30, autoAlpha: 0 },
-            { y: 0, autoAlpha: 1, duration: 0.4, ease: 'power4.out' }
+            { y: 0, autoAlpha: 1, duration: 1.5, ease: 'power4.out' }
         );
     }
     
     if (logoCardRef.value) {
         tl.fromTo(logoCardRef.value,
             { scale: 0.8, autoAlpha: 0, rotationX: 20 },
-            { scale: 1, autoAlpha: 1, rotationX: 0, duration: 1.0, ease: 'back.out(1.5)' },
+            { scale: 1, autoAlpha: 1, rotationX: 0, duration: 2.0, ease: 'back.out(1.5)' },
             "-=0.6"
         );
     }
@@ -153,7 +153,7 @@ onMounted(() => {
     if (titleRef.value) {
         tl.fromTo(titleRef.value,
             { y: 100, autoAlpha: 0, rotation: 2 },
-            { y: 0, autoAlpha: 1, rotation: 0, duration: 1.0, ease: 'power4.out' },
+            { y: 0, autoAlpha: 1, rotation: 0, duration: 2.0, ease: 'power4.out' },
             "-=0.8"
         );
     }
@@ -161,7 +161,7 @@ onMounted(() => {
     if (subtitleRef.value) {
         tl.fromTo(subtitleRef.value,
             { y: 30, autoAlpha: 0 },
-            { y: 0, autoAlpha: 1, duration: 0.4, ease: 'power3.out' },
+            { y: 0, autoAlpha: 1, duration: 1.5, ease: 'power3.out' },
             "-=0.8"
         );
     }
@@ -170,7 +170,7 @@ onMounted(() => {
     if (btns.length > 0) {
         tl.fromTo(btns,
             { y: 20, autoAlpha: 0 },
-            { y: 0, autoAlpha: 1, duration: 0.4, stagger: 0.055, ease: 'back.out(1.2)' },
+            { y: 0, autoAlpha: 1, duration: 1.5, stagger: 0.3, ease: 'back.out(1.2)' },
             "-=0.6"
         );
     }

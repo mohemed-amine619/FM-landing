@@ -47,7 +47,7 @@ onMounted(() => {
     gsap.fromTo(headerRef.value, 
         { x: -50, opacity: 0 }, 
         { 
-            x: 0, opacity: 1, duration: 0.4, ease: "power3.out",
+            x: 0, opacity: 1, duration: 1.5, ease: "power3.out",
             scrollTrigger: { trigger: sectionRef.value, start: "top 80%" }
         }
     );
@@ -56,7 +56,7 @@ onMounted(() => {
     gsap.fromTo(projectsRef.value, 
         { y: 100, opacity: 0 }, 
         { 
-            y: 0, opacity: 1, duration: 1.0, stagger: 0.055, ease: "power4.out",
+            y: 0, opacity: 1, duration: 2.0, stagger: 0.3, ease: "power4.out",
             scrollTrigger: { trigger: sectionRef.value, start: "top 70%" }
         }
     );

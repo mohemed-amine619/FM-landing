@@ -30,8 +30,8 @@ const onMouseLeaveHoverable = () => {
 
 onMounted(() => {
     // Initialize quickTo for maximum FPS
-    xTo = gsap.quickTo(cursorRef.value, "x", { duration: 0.4, ease: "power3.out" });
-    yTo = gsap.quickTo(cursorRef.value, "y", { duration: 0.4, ease: "power3.out" });
+    xTo = gsap.quickTo(cursorRef.value, "x", { duration: 1.5, ease: "power3.out" });
+    yTo = gsap.quickTo(cursorRef.value, "y", { duration: 1.5, ease: "power3.out" });
     xDotTo = gsap.quickTo(cursorDotRef.value, "x", { duration: 0.1, ease: "power3.out" });
     yDotTo = gsap.quickTo(cursorDotRef.value, "y", { duration: 0.1, ease: "power3.out" });
 
