@@ -70,7 +70,7 @@ onMounted(() => {
     gsap.fromTo(headerRef.value, 
         { y: -30, opacity: 0 }, 
         { 
-            y: 0, opacity: 1, duration: 0.8, ease: "power3.out",
+            y: 0, opacity: 1, duration: 0.4, ease: "power3.out",
             scrollTrigger: { trigger: sectionRef.value, start: "top 80%" }
         }
     );
@@ -83,7 +83,7 @@ onMounted(() => {
         <!-- Glow Accents -->
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[1px] bg-gradient-to-r from-transparent via-brand-cyan/20 to-transparent"></div>
         <!-- Background Atmosphere (Glowing Orbs) -->
-        <div class="absolute inset-0 pointer-events-none opacity-50 mix-blend-screen transform-gpu will-change-transform">
+        <div class="absolute inset-0 pointer-events-none opacity-50 transform-gpu">
             <div
                 class="absolute top-20 left-0 w-[500px] h-[500px] rounded-full -translate-x-1/2 animate-pulse-glow"
                 style="background: radial-gradient(circle, rgba(4,154,181,0.15) 0%, transparent 60%);">
@@ -123,7 +123,7 @@ onMounted(() => {
                     <!-- Duplicate the items to create seamless loop -->
                     <div v-for="(item, index) in row1" :key="index" class="glass-card w-[320px] md:w-[450px] p-6 md:p-8 rounded-3xl flex flex-col relative group border border-white/[0.05] hover:border-brand-cyan/30 transition-colors duration-500">
                         <div class="flex gap-1 mb-4">
-                            <i v-for="star in 5" :key="star" class="ph-fill ph-star text-sm md:text-base text-brand-cyan drop-shadow-[0_0_5px_rgba(4,154,181,0.5)]"></i>
+                            <i v-for="star in 5" :key="star" class="ph-fill ph-star text-sm md:text-base text-brand-cyan"></i>
                         </div>
                         <p class="text-gray-300 font-light text-base md:text-lg leading-relaxed flex-grow mb-8">
                             "{{ item.content }}"
@@ -146,7 +146,7 @@ onMounted(() => {
                 <div class="flex gap-6 md:gap-8 px-3 md:px-4 shrink-0" v-for="n in 3" :key="'r2-'+n">
                     <div v-for="(item, index) in row2" :key="index" class="glass-card w-[320px] md:w-[450px] p-6 md:p-8 rounded-3xl flex flex-col relative group border border-white/[0.05] hover:border-brand-green/30 transition-colors duration-500">
                         <div class="flex gap-1 mb-4">
-                            <i v-for="star in 5" :key="star" class="ph-fill ph-star text-sm md:text-base text-brand-green drop-shadow-[0_0_5px_rgba(37,220,125,0.5)]"></i>
+                            <i v-for="star in 5" :key="star" class="ph-fill ph-star text-sm md:text-base text-brand-green"></i>
                         </div>
                         <p class="text-gray-300 font-light text-base md:text-lg leading-relaxed flex-grow mb-8">
                             "{{ item.content }}"

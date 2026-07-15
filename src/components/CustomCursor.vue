@@ -30,8 +30,8 @@ const onMouseLeaveHoverable = () => {
 
 onMounted(() => {
     // Initialize quickTo for maximum FPS
-    xTo = gsap.quickTo(cursorRef.value, "x", { duration: 0.8, ease: "power3.out" });
-    yTo = gsap.quickTo(cursorRef.value, "y", { duration: 0.8, ease: "power3.out" });
+    xTo = gsap.quickTo(cursorRef.value, "x", { duration: 0.4, ease: "power3.out" });
+    yTo = gsap.quickTo(cursorRef.value, "y", { duration: 0.4, ease: "power3.out" });
     xDotTo = gsap.quickTo(cursorDotRef.value, "x", { duration: 0.1, ease: "power3.out" });
     yDotTo = gsap.quickTo(cursorDotRef.value, "y", { duration: 0.1, ease: "power3.out" });
 
@@ -55,8 +55,8 @@ onUnmounted(() => {
 
 <template>
     <div class="pointer-events-none fixed inset-0 z-[9999] overflow-hidden hidden md:block">
-        <div ref="cursorRef" class="absolute top-0 left-0 w-8 h-8 rounded-full border border-white/20 transition-colors transform-gpu will-change-transform"></div>
-        <div ref="cursorDotRef" class="absolute top-0 left-0 w-2 h-2 rounded-full bg-brand-cyan shadow-[0_0_10px_rgba(4,154,181,0.8)] transform-gpu will-change-transform"></div>
+        <div ref="cursorRef" class="absolute top-0 left-0 w-8 h-8 rounded-full border border-white/20 transition-colors transform-gpu"></div>
+        <div ref="cursorDotRef" class="absolute top-0 left-0 w-2 h-2 rounded-full bg-brand-cyan shadow-[0_0_10px_rgba(4,154,181,0.8)] transform-gpu"></div>
     </div>
 </template>
 

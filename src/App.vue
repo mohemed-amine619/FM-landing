@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import Preloader from './components/Preloader.vue';
+import CustomCursor from './components/CustomCursor.vue';
 import CircuitBackground from './components/ui/CircuitBackground.vue';
 import NavBar from './components/NavBar.vue';
 import HeroSection from './components/HeroSection.vue';
@@ -45,7 +46,7 @@ const initLenis = () => {
       lenis.raf(time * 1000);
    });
 
-   gsap.ticker.lagSmoothing(0);
+
 };
 
 const handleLoaded = () => {
@@ -70,6 +71,7 @@ const scrollTo = (id: string) => {
 
 <template>
    <Preloader @loaded="handleLoaded" />
+   <CustomCursor />
    
    <main class="antialiased overflow-x-hidden">
       <CircuitBackground />

@@ -38,7 +38,7 @@ const techStack: TechItem[] = [
                 <div v-for="(tech, index) in [...techStack, ...techStack]" :key="index"
                     class="text-2xl font-bold flex items-center space-x-2 transition-all duration-300 filter grayscale hover:grayscale-0 hover:scale-110 opacity-70 hover:opacity-100 cursor-default"
                     :style="{ color: tech.color }">
-                    <i :class="['ph', tech.icon, 'drop-shadow-lg']"></i>
+                    <i :class="['ph', tech.icon]"></i>
                     <span class="font-sans text-lg tracking-tight">{{ tech.name }}</span>
                 </div>
             </div>

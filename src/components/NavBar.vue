@@ -36,11 +36,11 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll));
                     <div class="relative flex items-center justify-center w-12 h-12 rounded-xl bg-white/[0.02] border border-white/[0.05] group-hover:border-brand-cyan/50 transition-all duration-500 overflow-hidden group-hover:shadow-[0_0_20px_rgba(4,154,181,0.4)]">
                         <div class="absolute inset-0 bg-gradient-to-br from-brand-cyan/30 to-brand-green/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         <img src="/logo.svg" alt="Fullstack Master Logo"
-                            class="relative h-7 w-auto object-contain drop-shadow-[0_0_12px_rgba(4,154,181,0.8)] transition-transform duration-500 group-hover:scale-110 group-hover:drop-shadow-[0_0_25px_rgba(37,220,125,1)]">
+                            class="relative h-7 w-auto object-contain transition-transform duration-500 group-hover:scale-110">
                     </div>
                     <div
                         class="font-sans font-bold text-xl tracking-tight flex flex-col leading-none md:block md:leading-normal">
-                        <span class="text-white drop-shadow-md">Fullstack</span><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-green drop-shadow-lg">Master</span>
+                        <span class="text-white">Fullstack</span><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-green">Master</span>
                     </div>
                 </div>
 

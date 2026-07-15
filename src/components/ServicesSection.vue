@@ -35,11 +35,11 @@ const headerRef = ref(null);
 const cardsRef = ref<HTMLElement[]>([]);
 
 onMounted(() => {
-    // Header Blur to Sharp Reveal
+    // Header Fade Up Reveal
     gsap.fromTo(headerRef.value, 
-        { y: 50, opacity: 0, filter: 'blur(10px)' }, 
+        { y: 50, opacity: 0 }, 
         { 
-            y: 0, opacity: 1, filter: 'blur(0px)', duration: 1.0, ease: "power3.out",
+            y: 0, opacity: 1, duration: 1.0, ease: "power3.out",
             scrollTrigger: { trigger: headerRef.value, start: "top 85%" }
         }
     );
@@ -48,7 +48,7 @@ onMounted(() => {
     gsap.fromTo(cardsRef.value, 
         { y: 80, opacity: 0, scale: 0.95 }, 
         { 
-            y: 0, opacity: 1, scale: 1, duration: 0.8, stagger: 0.15, ease: "back.out(1.2)",
+            y: 0, opacity: 1, scale: 1, duration: 0.4, stagger: 0.055, ease: "back.out(1.2)",
             scrollTrigger: { trigger: sectionRef.value, start: "top 75%" }
         }
     );
@@ -69,7 +69,7 @@ onMounted(() => {
                     class="glass-card p-6 rounded-xl group relative overflow-hidden h-full flex flex-col">
                     <!-- Hover Glow -->
                     <div
-                        class="absolute -right-10 -top-10 w-32 h-32 bg-brand-cyan/10 rounded-full blur-[50px] group-hover:bg-brand-green/10 transition-colors duration-500">
+                        class="absolute -right-10 -top-10 w-32 h-32 bg-brand-cyan/10 rounded-full blur-2xl group-hover:bg-brand-green/10 transition-colors duration-500">
                     </div>
 
                     <div

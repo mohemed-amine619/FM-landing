@@ -67,7 +67,7 @@ onMounted(() => {
 <template>
     <section id="contact" ref="sectionRef" class="py-24 relative z-10 overflow-hidden">
         <!-- Background decorative elements -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-tr from-brand-cyan/20 to-brand-green/20 mix-blend-screen blur-[150px] rounded-full pointer-events-none animate-pulse-glow">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-tr from-brand-cyan/20 to-brand-green/20 blur-3xl rounded-full pointer-events-none animate-pulse-glow">
         </div>
 
         <div class="max-w-4xl mx-auto px-4 relative z-20">

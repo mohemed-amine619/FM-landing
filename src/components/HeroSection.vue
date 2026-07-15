@@ -52,8 +52,72 @@ const titleRef = ref<HTMLElement | null>(null);
 const subtitleRef = ref<HTMLElement | null>(null);
 const pillRef = ref<HTMLElement | null>(null);
 
+const handleMouseMove = (e: MouseEvent) => {
+    if (!parallaxContainer.value) return;
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+
+    // Normalized coordinates (-1 to 1)
+    const xPos = (clientX / innerWidth - 0.5) * 2;
+    const yPos = (clientY / innerHeight - 0.5) * 2;
+
+    // 1. Dynamic Parallax Shapes
+    gsap.utils.toArray('.hero-shape').forEach((shape: any) => {
+        const depth = Number(shape.dataset.depth || 1);
+        gsap.to(shape, {
+            x: xPos * 60 * depth,
+            y: yPos * 60 * depth,
+            rotation: xPos * 15 * depth,
+            duration: 1.2,
+            ease: 'power3.out'
+        });
+    });
+
+    // 2. 3D Tilt on Logo Card
+    if (logoCardRef.value) {
+        gsap.to(logoCardRef.value, {
+            rotationY: xPos * 12,
+            rotationX: -yPos * 12,
+            transformPerspective: 1000,
+            ease: 'power2.out',
+            duration: 0.8
+        });
+    }
+
+    // 3. Magnetic Buttons
+    gsap.utils.toArray('.hero-btn').forEach((btn: any) => {
+        const rect = btn.getBoundingClientRect();
+        const btnX = rect.left + rect.width / 2;
+        const btnY = rect.top + rect.height / 2;
+        
+        // Calculate distance
+        const distanceX = clientX - btnX;
+        const distanceY = clientY - btnY;
+        const maxDistance = 100; // Activation radius
+
+        if (Math.abs(distanceX) < maxDistance && Math.abs(distanceY) < maxDistance) {
+            // Pull the button towards the cursor
+            gsap.to(btn, {
+                x: distanceX * 0.3,
+                y: distanceY * 0.3,
+                duration: 0.8,
+                ease: 'power2.out'
+            });
+        } else {
+            // Reset position
+            gsap.to(btn, {
+                x: 0,
+                y: 0,
+                duration: 1.2,
+                ease: 'elastic.out(1, 0.3)'
+            });
+        }
+    });
+};
+
 onMounted(() => {
     timeoutId = setTimeout(type, 1500); // Start typing after reveal
+    window.addEventListener('mousemove', handleMouseMove);
 
     // Initial float animation for the glass shapes
     gsap.utils.toArray('.hero-shape').forEach((shape: any, i: number) => {
@@ -74,7 +138,7 @@ onMounted(() => {
     if (pillRef.value) {
         tl.fromTo(pillRef.value, 
             { y: 30, autoAlpha: 0 },
-            { y: 0, autoAlpha: 1, duration: 0.8, ease: 'power4.out' }
+            { y: 0, autoAlpha: 1, duration: 0.4, ease: 'power4.out' }
         );
     }
     
@@ -97,7 +161,7 @@ onMounted(() => {
     if (subtitleRef.value) {
         tl.fromTo(subtitleRef.value,
             { y: 30, autoAlpha: 0 },
-            { y: 0, autoAlpha: 1, duration: 0.8, ease: 'power3.out' },
+            { y: 0, autoAlpha: 1, duration: 0.4, ease: 'power3.out' },
             "-=0.8"
         );
     }
@@ -106,7 +170,7 @@ onMounted(() => {
     if (btns.length > 0) {
         tl.fromTo(btns,
             { y: 20, autoAlpha: 0 },
-            { y: 0, autoAlpha: 1, duration: 0.8, stagger: 0.15, ease: 'back.out(1.2)' },
+            { y: 0, autoAlpha: 1, duration: 0.4, stagger: 0.055, ease: 'back.out(1.2)' },
             "-=0.6"
         );
     }
@@ -114,6 +178,7 @@ onMounted(() => {
 
 onUnmounted(() => {
     clearTimeout(timeoutId);
+    window.removeEventListener('mousemove', handleMouseMove);
 });
 </script>
 
@@ -123,10 +188,10 @@ onUnmounted(() => {
         <!-- Decorative Shapes -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
             <!-- Large Frosted Orb -->
-            <div data-depth="0.3" class="hero-shape absolute top-[20%] left-[10%] w-32 h-32 rounded-full border border-white/10 bg-gradient-to-br from-brand-cyan/20 to-transparent backdrop-blur-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_10px_40px_-10px_rgba(4,154,181,0.3)]"></div>
+            <div data-depth="0.3" class="hero-shape absolute top-[20%] left-[10%] w-32 h-32 rounded-full border border-white/10 bg-gradient-to-br from-brand-cyan/20 to-transparent backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_10px_40px_-10px_rgba(4,154,181,0.3)]"></div>
             
             <!-- Floating Glass Hexagon -->
-            <div data-depth="0.7" class="hero-shape absolute top-[65%] right-[15%] w-24 h-24 border border-white/10 bg-gradient-to-tr from-brand-green/20 to-transparent backdrop-blur-3xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]" style="clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);"></div>
+            <div data-depth="0.7" class="hero-shape absolute top-[65%] right-[15%] w-24 h-24 border border-white/10 bg-gradient-to-tr from-brand-green/20 to-transparent backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]" style="clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);"></div>
             
             <!-- Distant Glass Triangle -->
             <div data-depth="0.1" class="hero-shape absolute top-[30%] right-[30%] w-16 h-16 border-b border-r border-white/10 bg-gradient-to-tl from-brand-blue/20 to-transparent backdrop-blur-md rotate-45"></div>
@@ -149,14 +214,14 @@ onUnmounted(() => {
             <!-- 2. 3D Animated Logo Container -->
             <div class="mb-12 relative inline-block group" style="perspective: 1000px;">
                 <!-- Dual-Layer Pulsing Glow -->
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-brand-cyan/20 blur-[100px] rounded-full animate-pulse-slow pointer-events-none group-hover:bg-brand-cyan/40 transition-colors duration-1000 transform-gpu will-change-transform"></div>
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-brand-green/20 blur-[80px] rounded-full pointer-events-none group-hover:bg-brand-green/40 transition-colors duration-1000 transform-gpu will-change-transform" style="animation-delay: 2s;"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] bg-brand-cyan/20 blur-3xl rounded-full animate-pulse-slow pointer-events-none group-hover:bg-brand-cyan/40 transition-colors duration-1000 transform-gpu"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-brand-green/20 blur-2xl rounded-full pointer-events-none group-hover:bg-brand-green/40 transition-colors duration-1000 transform-gpu" style="animation-delay: 2s;"></div>
 
                 <!-- 3D Card Base -->
-                <div ref="logoCardRef" class="relative z-10 w-32 h-32 md:w-40 md:h-40 mx-auto bg-gradient-to-br from-white/[0.08] to-white/[0.01] rounded-[2.5rem] border border-white/10 flex items-center justify-center shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_20px_60px_-15px_rgba(4,154,181,0.5)] backdrop-blur-3xl overflow-hidden cursor-pointer opacity-0 transform-style-3d">
+                <div ref="logoCardRef" class="relative z-10 w-32 h-32 md:w-40 md:h-40 mx-auto bg-gradient-to-br from-white/[0.08] to-white/[0.01] rounded-[2.5rem] border border-white/10 flex items-center justify-center shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_20px_60px_-15px_rgba(4,154,181,0.5)] backdrop-blur-xl overflow-hidden cursor-pointer opacity-0 transform-style-3d">
                     <!-- Glass glare effect -->
                     <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
-                    <img src="/logo.svg" alt="Logo" class="relative z-10 w-full h-full object-contain filter drop-shadow-[0_0_25px_rgba(4,154,181,0.8)] group-hover:drop-shadow-[0_0_50px_rgba(37,220,125,1)] transition-all duration-700 ease-out translate-z-[50px]">
+                    <img src="/logo.svg" alt="Logo" class="relative z-10 w-full h-full object-contain filter group-hover:drop-shadow-lg transition-all duration-700 ease-out translate-z-[50px]">
                 </div>
             </div>
 
@@ -165,7 +230,7 @@ onUnmounted(() => {
                 <h1 ref="titleRef" class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white tracking-tight min-h-[120px] md:min-h-[160px] font-sans leading-tight opacity-0 origin-bottom flex flex-wrap justify-center items-center gap-x-3 gap-y-2">
                     <span>I Architect</span>
                     <span class="relative flex items-center">
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-brand-blue to-brand-green drop-shadow-[0_0_30px_rgba(4,154,181,0.5)]">{{ typingText }}</span>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-brand-blue to-brand-green">{{ typingText }}</span>
                         <span class="inline-block ml-1 md:ml-2 w-1 md:w-2 h-[1em] bg-brand-cyan animate-blink shadow-[0_0_15px_rgba(4,154,181,1)]"></span>
                     </span>
                 </h1>

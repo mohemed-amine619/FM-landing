@@ -14,11 +14,11 @@
   }
   
   .glass-card {
-      @apply bg-white/[0.02] backdrop-blur-md border border-white/[0.05] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] rounded-2xl transition-all duration-300 hover:bg-white/[0.06] hover:border-brand-cyan/60 hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(4,154,181,0.5),inset_0_1px_2px_rgba(255,255,255,0.3)] hover:scale-[1.02] hover:z-50 transform-gpu will-change-transform;
+      @apply bg-white/[0.02] backdrop-blur-sm border border-white/[0.05] shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] rounded-2xl transition-all duration-300 hover:bg-white/[0.06] hover:border-brand-cyan/60 hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(4,154,181,0.5),inset_0_1px_2px_rgba(255,255,255,0.3)] hover:scale-[1.02] hover:z-50 transform-gpu;
   }
 
   .glass-panel {
-      @apply bg-brand-dark/60 backdrop-blur-3xl border-b border-white/[0.05];
+      @apply bg-brand-dark/80 backdrop-blur-md border-b border-white/[0.05];
   }
   
   .glow-button {

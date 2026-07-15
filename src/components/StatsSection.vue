@@ -16,7 +16,7 @@ onMounted(() => {
     // Reveal animation
     gsap.fromTo(sectionRef.value, 
         { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: sectionRef.value, start: 'top 85%' } }
+        { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out', scrollTrigger: { trigger: sectionRef.value, start: 'top 85%' } }
     );
 
     // Number counting animation
@@ -43,7 +43,7 @@ onMounted(() => {
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-white/[0.05] mb-16">
                 <div v-for="(stat, index) in stats" :key="index" class="text-center px-4">
-                    <div class="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-brand-cyan to-brand-green mb-2 drop-shadow-[0_0_15px_rgba(4,154,181,0.5)]">
+                    <div class="text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-brand-cyan to-brand-green mb-2">
                         {{ stat.prefix }}<span ref="numbersRef">0</span>{{ stat.suffix }}
                     </div>
                     <div class="text-xs md:text-sm font-mono text-gray-500 uppercase tracking-widest">{{ stat.label }}</div>
