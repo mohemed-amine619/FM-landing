@@ -12,7 +12,6 @@ import HeroSection from './components/HeroSection.vue';
 import AboutSection from './components/AboutSection.vue';
 import ServicesSection from './components/ServicesSection.vue';
 import WhyChooseUs from './components/WhyChooseUs.vue';
-import PortfolioComponent from './components/PortfolioComponent.vue';
 import TechComponents from './components/TechComponents.vue';
 import TestimonialsSection from './components/TestimonialsSection.vue';
 import StatsSection from './components/StatsSection.vue';
@@ -81,7 +80,6 @@ const scrollTo = (id: string) => {
       <AboutSection />
       <ServicesSection />
       <WhyChooseUs />
-      <PortfolioComponent />
       <TechComponents />
       <TestimonialsSection />
       <StatsSection />
